@@ -1,0 +1,8 @@
+<Files ~ "^.(htaccess|htpasswd)$">
+deny from all
+</Files>
+ErrorDocument 404 "error/404.php"
+ErrorDocument 400 "error/404.php"
+ErrorDocument 500 "error/404.php"
+ErrorDocument 503 "error/404.php"
+order deny,allow
