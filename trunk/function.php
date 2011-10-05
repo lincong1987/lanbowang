@@ -1,6 +1,6 @@
 <?php
 include("inc/config.php");
-
+include("fn/m.class.php");
 $mysqlError = mysql_error();
 
 

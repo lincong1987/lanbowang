@@ -1,12 +1,44 @@
-<?php include("function.php");?>
+<?php include("function.php");
+
+//获取首页置顶消息
+$index_msg = index::getIndexMsg();
+
+//获取首页置顶消息
+$index_msg = index::getIndexMsg();
+
+//获取首页置顶消息
+$index_slide_images = index::getIndexSlideImages(10);
+
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <?php
 //导入meta数据及js库
-echo $systemHead["meta"].$systemHead["title"].JS_JQUERY.JS_DIALOG;
+echo $systemHead["meta"].
+	$systemHead["title"].
+	JS_JQUERY.
+	JS_DIALOG;
 ?>
 <script src="js/common.js" language="javascript" type="text/javascript"></script>
+<script>
+var index_msg = <?php echo json_encode($index_msg);?>;
+var index_slide_images = <?php echo json_encode($index_slide_images);?>;
+
+$(document).ready(function(){
+	$("#index_slide_images").append('<div id="piclist"></div><div id="numlist"></div>');
+	$.each(index_slide_images, function(i, n){
+		$("#index_slide_images #piclist").append('<a href="'+(n.href==''?'#':n.href)+'"><img src="'+n.imagePath+'" width="950" height="260"/></a>');
+		$("#index_slide_images #numlist").append('<a href="javascript:;"></a>');
+		});
+	
+	
+	
+	art.dialog({id:"index_msg", title:"重要消息", content:index_msg[0].content, width:400, lock:true, ok:function(){}});
+	});
+	
+</script>
 <link rel="stylesheet" type="text/css" href="css/base.css"/> 
 <style type="text/css">
 
@@ -20,16 +52,25 @@ echo $systemHead["meta"].$systemHead["title"].JS_JQUERY.JS_DIALOG;
         	用户名 <input class="text" maxlength="12" size="12" />
             密码 <input class="text"  maxlength="12" size="12" />
             <input class="btn" type="button" value="登陆" /></li>
-        <li class="head-content">系统公告显示</li>
+        <li class="head-content">
+        <marquee truespeed="truespeed" onmouseover="this.stop()" onmouseout="this.start()"><a href="#">系统公告显示</a></marquee></li>
     </ul>    
 </div>
 
 
 <div id="nav">
 	<div id="logo">
-    	<img src="src/flash/logo.png" />
-    </div>
+    	<img src="src/flash/logo.png" width="208" height="80" />
+        <div id="logo-r">
+       	  <ul>
+            	<li><span id="chinese_date">12</span> <span id="western_date">23</span> </li>
+                <li><span id="western_date">23</span></li>
+            </ul>
+        </div>
+  </div>
+    <div class="clearFix"></div>
 <div id="nav-tab">
+		<ul style="width:20px"></ul>
     	<ul>
         	<li><a>首页</a></li>
             <li><a>关于我们</a></li>
@@ -38,34 +79,18 @@ echo $systemHead["meta"].$systemHead["title"].JS_JQUERY.JS_DIALOG;
             <li><a>楼盘中心</a></li>
             <li><a>人才中心</a></li>            
         </ul>
+        <ul></ul>
     </div>
 </div>
 
-<!--<div id="scsrollbox">
-	<ul>
-		<li><img src="upload/show_2.jpg" width="946" alt=""></li>
-		<li><img src="upload/show_2.jpg" width="946" alt=""></li>
-		<li><img src="upload/show_2.jpg" width="946" alt=""></li>
-	</ul>
-</div> -->
+<div class="clearFix"></div>
 
-
-<div id="player">  
-    <div id="piclist">  
-        <a href="#"><img src="upload/show_2.jpg" width="950" height="260" id="p01" /></a>
-        <a href="#"><img src="upload/show_4.jpg" width="950" height="260" id="p02" /></a> 
-    </div>  
-    <div id="numlist">  
-        <a href="javascript:;" id="n01"></a>  
-        <a href="javascript:;" id="n02"></a>  
-
-    </div>  
-</div>
+<div id="index_slide_images"></div>
 
 <div id="main">
 
 </div>
-	<table width="950" border="0" cellpadding="0" cellspacing="0">
+	<table align="center" width="950" border="0" cellpadding="0" cellspacing="0">
     	<tr>
         	<td width="250">
             <div class="tab-show">
@@ -142,9 +167,9 @@ $(document).ready(function(){
 	$('#numlist a').hover(function(){  
 		var $index = $('#numlist a').index(this);  
 		showIndex($index);  
-	})  
+	});
 	  
-	$('#player').hover(function(){  
+	$('#index_slide_images').hover(function(){  
 		if(timer){clearInterval(timer);}  
 	},function(){  
 		timer=setInterval(function(){  
@@ -167,5 +192,7 @@ $(document).ready(function(){
 	} 
 });
 
-
+$(document).ready(function (){
+	WEATHER.RunGLNL();
+});
 </script>

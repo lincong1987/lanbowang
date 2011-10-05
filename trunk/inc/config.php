@@ -9,7 +9,7 @@ $debug = false;
 	错误报告 
 		@param 0 , E_ERROR | E_WARNING | E_PARSE , E_ALL
 */
-error_reporting(0);
+error_reporting(E_ALL);
 
 //session 开始
 //session_start();
@@ -74,7 +74,7 @@ $systemHead = array(
 
 
 $systemFoot = array(
-	"foot" => include(WEB_ROOT."/footer.php")
+	//"foot" => include(WEB_HOST."/footer.php")
 );
 
 if($system["close"]){
@@ -115,9 +115,9 @@ $jqueryVersion = '1.5.2';
 
 
 define("dialogPath", WEB_PATH."src/artDialog/artDialog.js?skin=".$dialogSkin);
-define(JS_DIALOG, '<script src="'.dialogPath.'" language="javascript" type="text/javascript"></script>');
+define("JS_DIALOG", '<script src="'.dialogPath.'" language="javascript" type="text/javascript"></script>');
 define("jqueryPath", WEB_PATH."js/jquery-".$jqueryVersion.".min.js?ver=".$jqueryVersion);
-define(JS_JQUERY, '<script src="'.jqueryPath.'" language="javascript" type="text/javascript"></script>');
+define("JS_JQUERY", '<script src="'.jqueryPath.'" language="javascript" type="text/javascript"></script>');
 
 
 
