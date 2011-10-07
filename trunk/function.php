@@ -13,9 +13,10 @@ $mysqlError = mysql_error();
 * @param string $type
 * @return string | json
 */
-function error($str = "", $type = "die"){
+function error($str = "", $type = "die", $href=""){
 	//global $debug;
 	$str = !empty($str) ? $str : "未定义的错误";
+	$href = !empty($href) ? $href : "#";
 	$err_img = WEB_PATH."src/img/icon_error.gif";
 	$debug = debug_backtrace();
 	$debug = $debug[0];
@@ -35,6 +36,64 @@ function error($str = "", $type = "die"){
 			";
 		}	
 	switch($type){
+		/*
+			goBack 
+		*/			
+		case "goBack" :
+			die("<html><body><script>
+			setTimeout('history.back()', 2000);			
+			</script><div style='font-size:12px; font-family:Verdana;background:url({$err_img}) #F6FBFF no-repeat 0px 0px; height:117px; width:550px; overflow-x: hidden; overflow-y: auto; padding-left:140px; border:1px solid #8cb7d7; margin:10px; color:#369'><br>错误:{$str}<br>".$_d."<br>正在返回...</div></body></html>");
+			break;
+		/*
+			alertGoBack 
+		*/				
+		case "alertGoBack" :
+			die("<html><body><script>
+			var str = ".json_encode($str).";
+			alert(str);
+			history.back();
+			</script><div style='font-size:12px; font-family:Verdana;background:url({$err_img}) #F6FBFF no-repeat 0px 0px; height:117px; width:550px; overflow-x: hidden; overflow-y: auto; padding-left:140px; border:1px solid #8cb7d7; margin:10px; color:#369'><br>错误:{$str}<br>".$_d."</div></body></html>");
+			break;
+		/*
+			alert 
+		*/	
+		case "alert" :
+			die("<html><body><script>
+			var str = ".json_encode($str).";
+			alert(str);
+			</script><div style='font-size:12px; font-family:Verdana;background:url({$err_img}) #F6FBFF no-repeat 0px 0px; height:117px; width:550px; overflow-x: hidden; overflow-y: auto; padding-left:140px; border:1px solid #8cb7d7; margin:10px; color:#369'><br>错误:{$str}<br>".$_d."</div></body></html>");
+			break;
+		/*
+			-1 
+		*/	
+		case "-1" :
+			die("<html><body><script>
+			//var str = ".json_encode($str).";
+			//alert(str);
+			history.go(-1);
+			</script><div style='font-size:12px; font-family:Verdana;background:url({$err_img}) #F6FBFF no-repeat 0px 0px; height:117px; width:550px; overflow-x: hidden; overflow-y: auto; padding-left:140px; border:1px solid #8cb7d7; margin:10px; color:#369'><br>错误:{$str}<br>".$_d."</div></body></html>");
+			break;
+		/*
+			alertGoTo 
+		*/			
+		case "alertGoTo" :
+			die("<html><body><script>
+			var _href = ".json_encode($href).", str = ".json_encode($str).";
+			alert(str);
+			location.href = _href;
+			</script><div style='font-size:12px; font-family:Verdana;background:url({$err_img}) #F6FBFF no-repeat 0px 0px; height:117px; width:550px; overflow-x: hidden; overflow-y: auto; padding-left:140px; border:1px solid #8cb7d7; margin:10px; color:#369'><br>错误:{$str}<br>".$_d."</div></body></html>");
+			break;
+		/*
+			goTo 
+		*/			
+		case "goTo" :
+			die("<html><body><script>
+			var _href = ".json_encode($href).", str = ".json_encode($str).";
+			//alert(str);
+			location.href = _href;
+			</script><div style='font-size:12px; font-family:Verdana;background:url({$err_img}) #F6FBFF no-repeat 0px 0px; height:117px; width:550px; overflow-x: hidden; overflow-y: auto; padding-left:140px; border:1px solid #8cb7d7; margin:10px; color:#369'><br>错误:{$str}<br>".$_d."</div></body></html>");
+			break;
+
 		case "die" :
 			die("<html><body><div style='font-size:12px; font-family:Verdana;background:url({$err_img}) #F6FBFF no-repeat 0px 0px; height:117px; width:550px; overflow-x: hidden; overflow-y: auto; padding-left:140px; border:1px solid #8cb7d7; margin:10px; color:#369'><br>错误:{$str}<br>".$_d."</div></body></html>");
 			break;
