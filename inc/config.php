@@ -7,7 +7,8 @@ $debug = false;
 
 /*
 	错误报告 
-		@param 0 , E_ERROR | E_WARNING | E_PARSE , E_ALL
+		@param args[0]
+			0 , E_ERROR | E_WARNING | E_PARSE , E_ALL
 */
 error_reporting(E_ALL);
 
@@ -20,7 +21,7 @@ set_time_limit(0);
 define('debug', $debug);
 define('HOST', 'localhost');
 define('WEB_HOST', 'http://'.$_SERVER['HTTP_HOST'].'/');
-define('WEB_PATH', 'http://'.$_SERVER['HTTP_HOST'].'/');
+define('WEB_PATH', WEB_HOST);
 
 //二级目录
 define('WEB_SRC', WEB_HOST."/src");
@@ -40,6 +41,7 @@ $mysqlConfig = array(
 	"db_user" => 'hx_exam',
 	"db_pass" => '86617786',
 	"db_name" => 'lbw',
+	"db_perfix" => 'lbw_',	
 	"db_charset" => 'utf8'
 );
 
@@ -47,8 +49,14 @@ $mysqlConfig = array(
 
 //系统
 $system = array(
+	"company" => "蓝博旺不动产营运集团",
 	"name" => "蓝博旺不动产营运集团 官方网站",
 	"host" => HOST,
+	"WEB_HOST" => WEB_HOST,
+	"HTML_PATH" => HTML_PATH,
+	"WEB_JS" => WEB_JS,
+	"WEB_CSS" => WEB_CSS,
+	"WEB_SRC" => WEB_SRC,
 	"version" => "1.0.0.1",
 	"author" => "林聪; lincong1987@gmail.com",
 	"adminMail" => "lincong1987@gmail.com",
@@ -64,10 +72,10 @@ $systemHead = array(
 	"meta" => '<link rel="icon" href="'.WEB_PATH.'favicon.ico" type="image/x-icon" />
 		<link rel="shortcut icon" href="'.WEB_PATH.'favicon.ico" type="image/x-icon" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-		<meta name="copyright" content="'.$system["host"].',版权所有"/>
-		<meta name="description" content="'.$system["description"].'">
-		<meta name="keywords" content="'.$system["keywords"].'">
-		<meta name="author" contect="'.$system["author"].'">
+		<meta name="copyright" content="'.$system["host"].',版权所有" />
+		<meta name="description" content="'.$system["description"].'" />
+		<meta name="keywords" content="'.$system["keywords"].'" />
+		<meta name="author" contect="'.$system["author"].'" />
 		<meta http-equiv="Content-Type" content="text/html; charset='.$system["charset"].'" />',
 	"title" => "<title>".$system["title"]."</title>"	
 );
@@ -84,40 +92,42 @@ if($system["close"]){
 
 
 /*
-	对话框皮肤
-	默认default, 有以下列表可选择
-		@param $dialogSkin = default, aero, black, blue, chrome, green, idialog, opera, simple, twitter
+	对话框皮肤 默认default
+		@param $dialogSkin 对话框主题, 有以下列表可选择
+			default, aero, black, blue, chrome, green, idialog, opera, simple, twitter
 
 */
 $dialogSkin = 'default';
 
 /*
 	jquery版本
-	@param $jqueryVersion = 1.5.2 , 1.6.2 , 1.6.4
-	
+	@param $jqueryVersion jquery的版本，
+		可选 1.5.2 , 1.6.2 , 1.6.4，
+			有新版本需要在js/下添加
 */
 $jqueryVersion = '1.5.2';
 
 
+$ligerUISkin = 'Aqua';
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
+	定义各种JS库的路径
+*/
 define("dialogPath", WEB_PATH."src/artDialog/artDialog.js?skin=".$dialogSkin);
-define("JS_DIALOG", '<script src="'.dialogPath.'" language="javascript" type="text/javascript"></script>');
+define("dialogToolsPath", WEB_PATH."src/artDialog/plugins/iframeTools.js");
+define("JS_DIALOG", '<script src="'.dialogPath.'" language="javascript" type="text/javascript"></script>
+					<script src="'.dialogToolsPath.'" language="javascript" type="text/javascript"></script>
+					');
 define("jqueryPath", WEB_PATH."js/jquery-".$jqueryVersion.".min.js?ver=".$jqueryVersion);
-define("JS_JQUERY", '<script src="'.jqueryPath.'" language="javascript" type="text/javascript"></script>');
+define("JS_JQUERY", '<script src="'.jqueryPath.'" language="javascript" type="text/javascript"></script>
+					');
+
+//define("jqueryPath", WEB_PATH."js/jquery-".$jqueryVersion.".min.js?ver=".$jqueryVersion);
+define("LIB_LIGERUI", '<link href="'.WEB_PATH.'src/LigerUI/lib/ligerUI/skins/'.$ligerUISkin.'/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+					 <script src="'.WEB_PATH.'src/LigerUI/lib/ligerUI/js/ligerui.min.js" type="text/javascript"></script>
+					 <script src="'.WEB_PATH.'src/LigerUI/lib/jquery-validation/jquery.validate.min.js" type="text/javascript"></script>
+					 <script src="'.WEB_PATH.'src/LigerUI/lib/jquery-validation/jquery.metadata.js" type="text/javascript"></script>
+					 <script src="'.WEB_PATH.'src/LigerUI/lib/jquery-validation/messages_cn.js" type="text/javascript"></script>');
 
 
 
@@ -127,8 +137,10 @@ define("JS_JQUERY", '<script src="'.jqueryPath.'" language="javascript" type="te
 
 
 
-
-
+/*
+	连接数据库
+	
+*/
 $conn = @mysql_connect($mysqlConfig["db_host"].":".$mysqlConfig["db_host"], $mysqlConfig["db_user"], $mysqlConfig["db_pass"]);
 if (!$conn) {
     error(mysql_error()."<br>请联系系统管理员 <a href='mailto:{$system["adminMail"]}'>发送邮件</a>。");

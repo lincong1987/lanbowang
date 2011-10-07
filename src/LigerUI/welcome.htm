@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title> 
+    <script type="text/javascript">
+        function f_addTabItem(url, text)
+        {
+            var tabid = "ligerui" + new Date().toDateString();
+            parent.f_addTab(tabid, text, url);
+        }
+    </script>
+    
+    <style type="text/css">
+        p.l-log-content
+        {
+            margin:0; padding:0;padding-left:20px; line-height:22px; font-size:12px;
+        }
+        span.l-log-content-tag
+        {
+            color:#008000; margin-right:2px; font-weight:bold;
+        }
+        h2.l-title
+        {
+            margin:7px; padding:0;font-size:17px; font-weight:bold;
+        }
+        h3.l-title
+        {
+            margin:4px; padding:0;font-size:15px; font-weight:bold;
+        }
+    </style>
+    
+</head>
+<body style="background:white; font-size:12px;">
+    <h2>欢迎使用Liger UI框架</h2>
+
+    <p class="l-log-content">作者: 谢略</p>
+    <p class="l-log-content">QQ: 175932810</p> 
+    <p class="l-log-content">交流QQ群1群: 71664111</p>  
+    <p class="l-log-content">交流QQ群2群：104842296</p>
+    <p class="l-log-content">交流QQ群3群：153770480</p>
+     <p class="l-log-content">当前版本: V1.02</p> 
+     <p class="l-log-content">API: <a href="http://api.ligerui.com/" target="_blank">http://api.ligerui.com/</a></p>
+    <p class="l-log-content">演示地址:<a href="http://demo.ligerui.com/"  target="_blank">http://demo.ligerui.com/</a></p>
+    <p class="l-log-content">源码下载:<a href="http://ligerui.googlecode.com/"  target="_blank">http://ligerui.googlecode.com/</a></p>
+    <p class="l-log-content">技术支持：<a href="javascript:f_addTabItem('http://www.cnblogs.com/leoxie2011/','博客园')">http://www.cnblogs.com/leoxie2011/</a></p> 
+
+     <h2 class="l-title">V1.0.2更新记录：</h2>
+     <h3 class="l-title">皮肤</h3> 
+    <p class="l-log-content">  <span class="l-log-content-tag">[增加]</span>增加一套皮肤(Silvery)</p>
+    <p class="l-log-content">  <span class="l-log-content-tag">[增加]</span>增加一套图标</p>
+     <h3 class="l-title">表单</h3> 
+        <p class="l-log-content">  <span class="l-log-content-tag">[增加]</span>增加表单提示气泡插件，结合表单验证使用，在demo中提供表单验证的一个解决方案</p> 
+    <p class="l-log-content">  <span class="l-log-content-tag">[优化]</span>优化表单,每个表单插件(ligerTextBox、ligerSpinner等)可以通过属性ligerui自动加载参数，如ligerui="{width:200}"</p> 
+
+    <h3 class="l-title">表格</h3> 
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[优化]</span>gridRows和Total字段名可配置，提交给服务器的参数可配置，所有与用户操作交互的地方（如上一页、下一页）都加上事件</p>
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[优化]</span>插件执行直接返回ligerGrid Manager(其他用到接口管理对象的插件都类同)</p>
+   <h3 class="l-title">树</h3> 
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[优化]</span>树支持id pid的这种线性数据结构格式</p>
+ <h3 class="l-title">弹窗</h3> 
+ <p class="l-log-content">
+        <span class="l-log-content-tag">[修复]</span>弹窗样式冲突</p>
+ <p class="l-log-content">
+        <span class="l-log-content-tag">[优化]</span>弹窗增加close支持</p>
+
+    <h2 class="l-title">V1.0.1更新记录：</h2>     
+    <h3 class="l-title">弹窗</h3> 
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[增加]</span>增加新插件：弹框，命名空间为$.ligerDialog。一系列静态方法。包括Open、Success、Error、Warn、Show。（这个样式比较美观，于是加上去了。并采用九格的排版方式，兼容性更好，扩展性更好）集对话框、模态窗口、非模态窗口等于这个命名空间下。（原来已经有弹出框插件和窗口插件了，ligerWindow和ligerMessage，不推荐，暂时保留）</p>
+    <h3 class="l-title">菜单</h3> 
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[增加]</span>增加新插件：菜单、菜单条、工具条,菜单可以自定义图片，可以动态设置项，动态的显示位置。菜单条和是在菜单的基础上显示的一个类似Window菜单的一个插件，工具条是一些按钮的集合，可以自定义图片。 
+    </p>
+    <h3 class="l-title">树</h3> 
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[增加]</span>提供右击方法实现的接口 
+    </p>
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[优化]</span>点击项就折叠/反折叠，而不是点击 + 才折叠 
+    </p>
+    <h3 class="l-title">下拉框</h3>  
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[增加]</span>支持在分页的表格在选取数据(配置grid,参数跟ligerGrid的参数一致)  
+    </p>
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[增加]</span>支持在树选取数据(配置tree,参数跟ligerTree的参数一致)  
+    </p>
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[增加]</span>提供Resize方法实现的接口 
+    </p>
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[优化]</span>细节优化</p>
+    <h3 class="l-title">表格</h3> 
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[增加]</span>汇总方式增加一个render(自定义函数，不限于sum、avg、count、max、min)  
+    </p>
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[增加]</span>增加复选框列，同时增加相应的事件和方法。 
+    </p>
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[优化]</span>优化了显示速度 
+    </p> 
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[修复]</span>解决在IE6下表格头部文字消失的问题 
+    </p>
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[修复]</span>解决包含在form下不能正常显示高度的问题(height设置为百分比)
+    </p>
+    <h3 class="l-title">布局</h3> 
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[增加]</span>ligerTab增加右键菜单功能，包括 关闭其他/关闭全部等。 
+    </p>
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[增加]</span>ligerTab增加获取Items Count，删除项等常见方法 
+    </p>
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[增加]</span>ligerLayout增加初始化控制左边/右边隐藏、是否折叠、是否调整大小等方法。 
+    </p>
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[优化]</span>面板点击项就折叠/反折叠，而不是点击 + 才折叠 
+    </p>
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[修复]</span>解决ligerLayout，在IE6下调整Line太宽的问题 
+    </p>
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[修复]</span>解决ligerLayout，包含在form下不能正常显示高度的问题 
+    </p>
+    <h3 class="l-title">表单</h3> 
+    <p class="l-log-content">
+        <span class="l-log-content-tag">[修复]</span> ligerSpinner每次点击即增加/减少，而不是按住的时候才有效果 
+    </p>
+
+
+</body>
+</html>
