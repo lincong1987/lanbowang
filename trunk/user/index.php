@@ -1,12 +1,12 @@
 <?php
 include("../function.php");
 $isLogin = user::isLogin();
-if(!$isLogin){errro("你没有权限", "alertGoTo", WEB_HOST.'index.php');}
+if(!$isLogin){error("你没有权限", "alertGoTo", WEB_HOST.'index.php');}
 
 $isAdmin = user::isAdmin();
 
 //
-$user = user::getUserSession();
+$u = user::getUserSession();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -31,7 +31,7 @@ var tree = null;
 
 var isLogin = <?php echo json_encode($isLogin);?>;
 
-var user = <?php echo json_encode($user);?>;
+var user = <?php echo json_encode($u);?>;
 
 var system = <?php echo json_encode($system);?>;
 

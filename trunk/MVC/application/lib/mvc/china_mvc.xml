@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chinaMVC>
+
+<customerConfig>
+
+<resultTypes>
+<registResultType name='json' php='lib/MVC/result/JSONResult' class='JSONResult'></registResultType>
+<registResultType name='redirect' php='lib/MVC/result/RedirectResult' class='RedirectResult'></registResultType>
+<registResultType name='dispatcher' php='lib/MVC/result/DispatcherResult' class='DispatcherResult'></registResultType>
+<registResultType name='actionChain' php='lib/MVC/result/ActionChainResult' class='ActionChainResult'></registResultType>
+</resultTypes>
+
+<globalLanguagePacks>
+<!--
+<globalLanguagePack name="language" path="./"></globalLanguagePack>
+ -->
+</globalLanguagePacks>
+
+
+<validateCheckers>
+
+<registChecker name="necessary" php="lib/MVC/validateChecker/NecessaryChecker"></registChecker>
+<registChecker name="empty" php="lib/MVC/validateChecker/EmptyChecker"></registChecker>
+
+</validateCheckers>
+
+</customerConfig>
+
+
+<include file="demo.xml"></include>
+
+
+
+
+</chinaMVC>

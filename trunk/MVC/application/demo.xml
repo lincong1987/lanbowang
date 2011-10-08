@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chinaMVC>
+
+<customerConfig>
+	<globalLanguagePacks>
+		<globalLanguagePack name="demo" path="./"></globalLanguagePack>
+	</globalLanguagePacks>
+</customerConfig>
+
+<package name="demo">
+
+	<action name="LoginUI" php="module/demo/action/LoginAction" function="index">
+		<result name="index" >demo/login.tpl</result>
+	</action>
+	
+	<action name="Login" php="module/demo/action/LoginAction" function="login">
+		<result name="success" type="dispatcher">demo/loginSuccess.tpl</result>
+		<result name="validateError">demo/loginError.tpl</result>
+		<result name="error">demo/loginError.tpl</result>
+	</action>
+
+</package>
+
+</chinaMVC>

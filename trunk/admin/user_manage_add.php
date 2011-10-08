@@ -17,15 +17,7 @@ echo $systemHead["meta"].
 
 <script>
 $(function() {
-	//不能出现中文
-	$.validator.addMethod("uid", function(value, element) { 
-		return this.optional(element) || /^[A-Za-z0-9]+$/.test(value); 
-	}, "只能包括英文字母,数字"); 
-	// 手机号码验证    
-	$.validator.addMethod("isMob", function(value, element) {    
-		var length = value.length;    
-		return this.optional(element) || (length == 11 && /^1[358]\d{9}$/.test(value));    
-	}, "请正确填写您的手机号码!");
+
 	
 	$.metadata.setType("attr", "validate");
 	var v = $("form").validate({
@@ -46,14 +38,15 @@ $(function() {
 		},
 		submitHandler: function() {
 			$("form .l-text,.l-textarea").ligerHideTip(); 
-            form.submit();			
+            form.submit();
 		}
 	});
+	
 	$("form").ligerForm();
-	$(".l-button-test").click(function() {
-		//alert(v.element($("#txtName")))
-	});
+
 });
+
+
 </script>
 <style>
 .l-table-edit {}
@@ -64,6 +57,8 @@ $(function() {
 </head>
 
 <body>
+
+
 <form name="form1" method="post" action="user_manage_action.php?action=add"
 id="form1">
   <div>
@@ -112,6 +107,16 @@ id="form1">
             </td>
             <td align="left">
             </td>
+        </tr>
+        <tr>
+          <td align="right" class="l-table-edit-td" valign="top">管理员:</td>
+          <td align="left" class="l-table-edit-td">
+          <input id="isAdmin_0" type="radio" name="isAdmin" value="0" checked="checked" />
+          <label for="isAdmin_0">否</label>
+          <input id="isAdmin_1" type="radio" name="isAdmin" value="1" />
+          <label for="isAdmin_1">是</label>
+          </td>
+          <td align="left"></td>
         </tr>
         <tr>
           <td align="right" class="l-table-edit-td" valign="top">身份证:</td>
@@ -220,7 +225,8 @@ id="form1">
             </td>
         </tr>
     </table>
-  <br />
+<br />
+
     <input type="submit" value="提交" id="Button1" class="l-button l-button-submit"
     />
 </form>
