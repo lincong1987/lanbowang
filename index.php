@@ -1,13 +1,14 @@
 <?php include("function.php");
+$index = new index();
 
 //获取首页置顶消息
-$index_msg = index::getIndexMsg();
+$index_msg = $index->getIndexMsg();
 
 //获取首页置顶消息
-$index_top_msg = index::getTopMsg();
+$index_top_msg = $index->getTopMsg();
 
 //获取首页置顶消息
-$index_slide_images = index::getIndexSlideImages(10);
+$index_slide_images = $index->getIndexSlideImages(10);
 
 //检查是否登陆
 $isLogin = login::isLogin();

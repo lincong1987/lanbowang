@@ -1,4 +1,6 @@
 <?php
+//session 开始
+session_start();
 /*
 	全局调试
 		@param true , false
@@ -12,8 +14,8 @@ $debug = false;
 */
 error_reporting(E_ALL);
 
-//session 开始
-//session_start();
+
+
 //设置PHP执行时间为无限制
 set_time_limit(0);
 

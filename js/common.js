@@ -33,9 +33,8 @@ function fastLogin(){
 
 function loginOut(){
 	art.dialog.confirm('你确定要退出吗？', function () {
-			var host = system.host ? system.host : '';
-			location.href = "http://" + host + "/action.php?action=loginOut";
-			alert("http://" + host + "/action.php?action=loginOut")
+			location.href = system.WEB_HOST+"action.php?action=loginOut";
+			//alert("http://" + host + "/action.php?action=loginOut")
 		});
 	}
 
@@ -58,9 +57,80 @@ function adminLogin(){
 function userPasswordModi(){
 	var FN_userPasswordModi = art.dialog({
 		title : "密码修改",
-		ok : function(){
+		lock : true,
+		drag : false,
+		init : function(){
+			var that = this;
+			var form =   '<style>#form_userPasswordModi .l-table-edit-td{ padding:4px;}</style>'
+							+'<form name="form_userPasswordModi" method="post" id="form_userPasswordModi">'
+								+'<table cellpadding="0" cellspacing="0" class="l-table-edit">'
+									+'<tr><td align="right" class="l-table-edit-td">旧密码:</td><td align="left" class="l-table-edit-td">'
+											+'<input name="oldPwd" type="password" id="oldPwd" ltype="password" validate="{required:true,minlength:3,maxlength:12}"/>'
+									+'</td><td align="left"></td></tr>'
+									+'<tr><td align="right" class="l-table-edit-td">新密码:</td><td align="left" class="l-table-edit-td">'
+											+'<input name="newPwd" type="password" id="newPwd" ltype="password" validate="{required:true,minlength:3,maxlength:12}"/>'
+									+'</td><td align="left"></td></tr>'
+									+'<tr><td align="right" class="l-table-edit-td">再次输入新密码:</td><td align="left" class="l-table-edit-td">'
+											+'<input name="newPwd_1" type="password" id="newPwd_1" ltype="password" validate="{required:true,minlength:3,maxlength:12,equalTo:\'#newPwd\'}"/></td><td align="left"></td></tr></table>'
+						+'</form>'
+			this.content(form);
 			
-			}
+			$.metadata.setType("attr", "validate");
+
+			var v = $("#form_userPasswordModi").validate({
+				debug: true,
+				errorPlacement: function(lable, element) {
+					if (element.hasClass("l-textarea")){
+						element.ligerTip({content: lable.html(),appendIdTo: lable});
+						}else if (element.hasClass("l-text-field")){
+							element.parent().ligerTip({content: lable.html(),appendIdTo: lable});
+							}else{
+								lable.appendTo(element.parents("td:first").next("td"))
+								}
+				},
+				success: function(lable) {
+					lable.ligerHideTip();
+				},
+				submitHandler: function() {
+					$("#form_userPasswordModi .l-text,.l-textarea").ligerHideTip(); 
+					art.dialog.tips('数据正在提交..', 8);				
+					$.ajax({
+						type:'POST',
+						url: system.WEB_HOST + "user/action.php?action=userPasswordModi",
+						data:$("#form_userPasswordModi").serialize(),
+						success:function(json){
+							if(json.state == "error"){
+								art.dialog({id: 'Tips'}).close();
+								var E_MSG = "";
+								if($.type(json.msg)=='object'){
+									$.each(json.msg, function(i, n){
+										E_MSG += "["+i+"]"+n+"<br>"
+										});
+									}
+								$("#form_userPasswordModi").ligerTip({ content: E_MSG!=""?E_MSG:json.msg});
+								}
+							if(json.state == "success"){
+								$("form .l-text,.l-textarea").ligerHideTip();
+								art.dialog.tips('修改成功', 2);
+								that.close();
+								}
+							}
+						});
+				}
+			});
+
+			$("#form_userPasswordModi").ligerForm();
+			},
+		ok : function(){
+			//alert($("#form_userPasswordModi").serialize());
+			//this.content()
+			$("#form_userPasswordModi").submit();
+			return false;
+			},
+		okVal : "修改",	
+		cancel : function(){
+			$("form .l-text,.l-textarea").ligerHideTip();
+			}	
 		});
 	
 	

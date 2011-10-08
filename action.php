@@ -1,6 +1,6 @@
 <?php
 /*!
- * Action Lib
+ * Action Lib :: domain/action.php :: 管理前台请求
  *
  * Author: lincong1987@gmail.com
  *
@@ -13,13 +13,21 @@ $action = isset($_REQUEST["action"]) ? $_REQUEST["action"] : "";
 
 //登陆
 if($action == "login"){
-	$uid = isset($_REQUEST["uid"]) ? trim($_REQUEST["uid"]) : "";
-	if(empty($uid)){error("用户名为空", "alertGoBack");}
-	$pwd = isset($_REQUEST["pwd"]) ? $_REQUEST["pwd"] : "";
-	if(empty($uid)){error("密码为空", "alertGoBack");}
-	//返回后台地址
-	$redirect = login::loginIn($uid, $pwd);	
-	header("location:".WEB_HOST."index.php");
+	$login = new login();
+	$result = $login->loginIn();
+	switch($result){
+		case "success" : 
+			//error($login->getActionError, "alertGoTo", $_SERVER['HTTP_REFERER']);
+			header("location:".WEB_HOST."index.php");
+		break;
+		case "error" : 
+			//print_r ($login->getActionError());
+			//die();
+			error($login->getActionError(), "alertGoTo", $_SERVER['HTTP_REFERER']);
+			//header("location:".WEB_HOST."index.php");
+		break;
+		}
+	
 	}
 
 //退出
