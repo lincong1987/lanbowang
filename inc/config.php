@@ -19,17 +19,19 @@ error_reporting(E_ALL);
 //设置PHP执行时间为无限制
 set_time_limit(0);
 
-//
+
 define('debug', $debug);
 define('HOST', 'localhost');
-define('WEB_HOST', 'http://'.$_SERVER['HTTP_HOST'].'/');
+
+define("NAMESPACE", "");
+define('WEB_HOST', 'http://'.$_SERVER['HTTP_HOST'].'/'.NAMESPACE);
 define('WEB_PATH', WEB_HOST);
 
 //二级目录
-define('WEB_SRC', WEB_HOST."/src");
-define('WEB_JS', WEB_HOST."/js");
-define('WEB_CSS', WEB_HOST."/css");
-define('HTML_PATH', WEB_HOST."/html");
+define('WEB_SRC', WEB_HOST.NAMESPACE."/src");
+define('WEB_JS', WEB_HOST.NAMESPACE."/js");
+define('WEB_CSS', WEB_HOST.NAMESPACE."/css");
+define('HTML_PATH', WEB_HOST.NAMESPACE."/html");
 
 define('WEB_ROOT', dirname(__FILE__));
 
