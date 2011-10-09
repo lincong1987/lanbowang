@@ -10,6 +10,7 @@ echo $systemHead["meta"].
 	$systemHead["title"].
 	JS_JQUERY.
 	JS_DIALOG.
+	JS_COMMON.
 	LIB_LIGERUI;
 ?>
 

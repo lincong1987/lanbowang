@@ -157,6 +157,17 @@ LOCK TABLES `lbw_web_nav` WRITE;
 /*!40000 ALTER TABLE `lbw_web_nav` ENABLE KEYS */;
 UNLOCK TABLES;
 
+CREATE TABLE `lbw_web_news` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `news_title` varchar(255) NOT NULL DEFAULT '未命名的新闻',
+  `news_content` text,
+  `news_content_short` varchar(50) DEFAULT NULL,
+  `uid` varchar(16) DEFAULT NULL,
+  `isPublish` int(1) NOT NULL DEFAULT '1',
+  `news_post_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

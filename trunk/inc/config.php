@@ -23,20 +23,35 @@ set_time_limit(0);
 define('debug', $debug);
 define('HOST', 'localhost');
 
+//本地文档目录
+define('WEB_ROOT', dirname(__FILE__));
+//设置项目的工作路径 domain/{NAME_SPACE}/index...
 define("NAME_SPACE", "");
+
 define('WEB_HOST', 'http://'.$_SERVER['HTTP_HOST'].'/'.NAME_SPACE);
 define('WEB_PATH', WEB_HOST);
 
 //二级目录
 define('WEB_SRC', WEB_HOST.NAME_SPACE."/src");
-define('WEB_JS', WEB_HOST.NAME_SPACE."/js");
-define('WEB_CSS', WEB_HOST.NAME_SPACE."/css");
+define('WEB_JS', WEB_HOST.NAME_SPACE."js/");
+define('WEB_CSS', WEB_HOST.NAME_SPACE."css/");
 define('HTML_PATH', WEB_HOST.NAME_SPACE."/html");
 
-define('WEB_ROOT', dirname(__FILE__));
+//已上传文件路径
+define('WEB_UPLOAD_PATH', WEB_HOST.NAME_SPACE."upload/");		
 
+//本地文档上传目录
+define('UPLOADFILE_ROOT', realpath(dirname(WEB_ROOT)."/upload"));
 
+define('UPLOAD_FILE_MAX_SIZE', 1000000000);
 
+//定义允许上传的文件扩展名
+$uploadExt = array(
+	'image' => array('gif', 'jpg', 'jpeg', 'png', 'bmp', 'tiff', 'ico'),
+	'flash' => array('swf', 'flv'),
+	'media' => array('swf', 'flv', 'mp3', 'wav', 'wma', 'wmv', 'mid', 'avi', 'mpg', 'asf', 'rm', 'rmvb'),
+	'file' => array('doc', 'docx', 'xls', 'xlsx', 'ppt', 'htm', 'html', 'txt', 'zip', 'rar', 'gz', 'bz2', 'swf', 'flv', 'mp3', 'wav', 'wma', 'wmv', 'mid', 'avi', 'mpg', 'asf', 'rm', 'rmvb', 'gif', 'jpg', 'jpeg', 'png', 'bmp', 'tiff', 'ico', '7z', 'psd', 'pdf', 'sql', 'url', 'exe'),
+);
 
 //数据库相关配置
 $mysqlConfig = array(
@@ -125,15 +140,18 @@ define("JS_DIALOG", '<script src="'.dialogPath.'" language="javascript" type="te
 define("jqueryPath", WEB_PATH."js/jquery-".$jqueryVersion.".min.js?ver=".$jqueryVersion);
 define("JS_JQUERY", '<script src="'.jqueryPath.'" language="javascript" type="text/javascript"></script>
 					');
-
-//define("jqueryPath", WEB_PATH."js/jquery-".$jqueryVersion.".min.js?ver=".$jqueryVersion);
+define("JS_COMMON", '<script src="'.WEB_JS.'/common.js" language="javascript" type="text/javascript"></script>
+					');					
+define("JS_BASE", '<script src="'.WEB_JS.'base.js" language="javascript" type="text/javascript"></script>
+					');
 define("LIB_LIGERUI", '<link href="'.WEB_PATH.'src/LigerUI/lib/ligerUI/skins/'.$ligerUISkin.'/css/ligerui-all.css" rel="stylesheet" type="text/css" />
 					 <script src="'.WEB_PATH.'src/LigerUI/lib/ligerUI/js/ligerui.min.js" type="text/javascript"></script>
 					 <script src="'.WEB_PATH.'src/LigerUI/lib/jquery-validation/jquery.validate.min.js" type="text/javascript"></script>
 					 <script src="'.WEB_PATH.'src/LigerUI/lib/jquery-validation/jquery.metadata.js" type="text/javascript"></script>
 					 <script src="'.WEB_PATH.'src/LigerUI/lib/jquery-validation/messages_cn.js" type="text/javascript"></script>');
 
-
+define("CSS_BASE", '<link rel="stylesheet" type="text/css" href="'.WEB_CSS.'base.css"/>
+					');
 
 
 
