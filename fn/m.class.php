@@ -244,7 +244,31 @@ class user extends ActionSupport{
 		}	
 	}	
 	
+class news extends ActionSupport{
 	
+	private $title;
+	
+	public function add(){
+		
+		}
+	
+	public function modi(){
+		
+		}
+	
+	public function del(){
+		
+		}
+
+	public function get($count){
+		
+		}
+
+	public function getNewsById($id){
+		
+		}
+	
+	}	
 	
 	
 	

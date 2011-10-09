@@ -23,11 +23,12 @@ $user = user::getUserSession();
 //导入meta数据及js库
 echo $systemHead["meta"].
 	$systemHead["title"].
+	CSS_BASE.
 	JS_JQUERY.
+	JS_COMMON.
 	JS_DIALOG;
 ?>
-<script src="js/common.js" language="javascript" type="text/javascript"></script>
-<script src="js/base.js" language="javascript" type="text/javascript"></script>
+
 
 <script>
 var index_msg = <?php echo json_encode($index_msg);?>;
@@ -80,7 +81,7 @@ $(document).ready(function(){
 	
 
 </script>
-<link rel="stylesheet" type="text/css" href="css/base.css"/> 
+
 <style type="text/css">
 
 </style>
@@ -116,13 +117,13 @@ $(document).ready(function(){
     <div class="clearFix"></div>
 <div id="nav-tab">
 		<ul style="width:20px"></ul>
-    	<ul>
-        	<li><a>首页</a></li>
-            <li><a>关于我们</a></li>
-            <li><a>企业文化</a></li>            
-            <li><a>新闻中心</a></li>
-            <li><a>楼盘中心</a></li>
-            <li><a>人才中心</a></li>            
+    	<ul id="navigationMenu">
+        	<li><a class="normalMenu">首页</a></li>
+            <li><a class="normalMenu">关于我们</a></li>
+            <li><a class="normalMenu">企业文化</a></li>            
+            <li><a class="normalMenu">新闻中心</a></li>
+            <li><a class="normalMenu">楼盘中心</a></li>
+            <li><a class="normalMenu">人才中心</a></li>            
         </ul>
         <ul></ul>
     </div>
@@ -240,5 +241,7 @@ $(document).ready(function(){
 
 $(document).ready(function (){
 	WEATHER.RunGLNL();
+	$.NAV.init();
+
 });
 </script>
