@@ -1,4 +1,4 @@
-# MySQL-Front 5.1  (Build 3.57)
+﻿# MySQL-Front 5.1  (Build 3.57)
 
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE */;
 /*!40101 SET SQL_MODE='' */;
@@ -121,7 +121,7 @@ CREATE TABLE `lbw_user` (
   `idNumber` varchar(18) DEFAULT NULL,
   `isAdmin` varchar(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 #
 # Dumping data for table lbw_user
@@ -129,10 +129,13 @@ CREATE TABLE `lbw_user` (
 LOCK TABLES `lbw_user` WRITE;
 /*!40000 ALTER TABLE `lbw_user` DISABLE KEYS */;
 
-INSERT INTO `lbw_user` VALUES (1,'admin','管理员',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00',20,2,NULL,NULL,'1');
-INSERT INTO `lbw_user` VALUES (2,'lincong','林聪',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00',20,2,NULL,NULL,'1');
-INSERT INTO `lbw_user` VALUES (3,'aa','adsasd','asdasd',2,'asd','asd','asd','asd','asd','asd','1987-12-12',23,1,'asdasdasd',NULL,'0');
+INSERT INTO `lbw_user` VALUES (1,'admin','管理员','1267f3785ebfea0eaa89a3d1595e718f',0,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00',20,2,NULL,NULL,'1');
+INSERT INTO `lbw_user` VALUES (2,'lincong','林聪','1267f3785ebfea0eaa89a3d1595e718f',0,NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00',20,2,NULL,NULL,'1');
+INSERT INTO `lbw_user` VALUES (3,'aa','adsasd','1267f3785ebfea0eaa89a3d1595e718f',2,'asd','asd','asd','asd','asd','asd','1987-12-12',23,1,'asdasdasd',NULL,'0');
 INSERT INTO `lbw_user` VALUES (4,'jianglili','江黎俐','1267f3785ebfea0eaa89a3d1595e718f',2,'0571-886617786','15925711961','159257119','llll@live.com','88234636','lincong1987@gmail.com','2011-05-01',20,3,'杭州滨江','e7a5f0bbca4dc5bfbf','1');
+INSERT INTO `lbw_user` VALUES (5,'gaochen','高晨','21232f297a57a5a743894a0e4a801fc3',2,'','','','','','gaochen@icinfo.com.cn','2011-10-05',20,2,'河南','d41d8cd98f00b204e9','0');
+INSERT INTO `lbw_user` VALUES (6,'zhangjun','章军','e10adc3949ba59abbe56e057f20f883e',1,'','','','','','zj@xx.xx','2011-10-26',20,2,'ss','fe73f687e5bc528021','1');
+INSERT INTO `lbw_user` VALUES (7,'huangli','黄丽','1267f3785ebfea0eaa89a3d1595e718f',2,'','','','','','huangli@icinfo.com','2011-01-03',20,5,'啊啊','1a100d2c0dab19c443','1');
 /*!40000 ALTER TABLE `lbw_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,16 +160,93 @@ LOCK TABLES `lbw_web_nav` WRITE;
 /*!40000 ALTER TABLE `lbw_web_nav` ENABLE KEYS */;
 UNLOCK TABLES;
 
+#
+# Source for table lbw_web_news
+#
+
+DROP TABLE IF EXISTS `lbw_web_news`;
 CREATE TABLE `lbw_web_news` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `news_title` varchar(255) NOT NULL DEFAULT '未命名的新闻',
   `news_content` text,
   `news_content_short` varchar(50) DEFAULT NULL,
+  `news_post_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `news_type_id` int(11) DEFAULT '1',
   `uid` varchar(16) DEFAULT NULL,
   `isPublish` int(1) NOT NULL DEFAULT '1',
-  `news_post_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+#
+# Dumping data for table lbw_web_news
+#
+LOCK TABLES `lbw_web_news` WRITE;
+/*!40000 ALTER TABLE `lbw_web_news` DISABLE KEYS */;
+
+INSERT INTO `lbw_web_news` VALUES (1,'未命名的新闻','1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111','11111111111111111111111111111111111111111111111111','2011-10-10 00:55:41',1,'lincong',1);
+INSERT INTO `lbw_web_news` VALUES (2,'asdasdasd','asdasd','asdasd','2011-09-26 02:36:00',1,'lincong',1);
+INSERT INTO `lbw_web_news` VALUES (3,'12312312312','<img alt=\"\" src=\"http://maps.googleapis.com/maps/api/staticmap?center=31.230393%2C121.473704&amp;zoom=11&amp;size=558x360&amp;maptype=roadmap&amp;markers=31.230393%2C121.473704&amp;language=zh_CN&amp;sensor=false\" />','','2011-10-28 02:37:00',1,'lincong',1);
+INSERT INTO `lbw_web_news` VALUES (4,'132123','asdasdasd','asdasdasd','0000-00-00 00:00:00',1,'lincong',1);
+INSERT INTO `lbw_web_news` VALUES (5,'asdasd','sdasd','sdasd','0000-00-00 00:00:00',1,'lincong',1);
+INSERT INTO `lbw_web_news` VALUES (6,'asdasd','sdasd','sdasd','0000-00-00 00:00:00',1,'lincong',1);
+INSERT INTO `lbw_web_news` VALUES (7,'wqdqwda','<img src=\"/upload/image/20111010/20111010183531_53931.jpg\" alt=\"\" />','此条新闻没有文本内容','0000-00-00 00:00:00',1,'lincong',1);
+/*!40000 ALTER TABLE `lbw_web_news` ENABLE KEYS */;
+UNLOCK TABLES;
+
+#
+# Source for table lbw_web_news
+#
+
+DROP TABLE IF EXISTS `lbw_web_news`;
+CREATE TABLE `lbw_web_news` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `news_title` varchar(255) NOT NULL DEFAULT '未命名的新闻',
+  `news_content` text,
+  `news_content_short` varchar(50) DEFAULT NULL,
+  `news_post_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `news_type_id` int(11) DEFAULT '1',
+  `uid` varchar(16) DEFAULT NULL,
+  `isPublish` int(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+#
+# Dumping data for table lbw_web_news
+#
+LOCK TABLES `lbw_web_news` WRITE;
+/*!40000 ALTER TABLE `lbw_web_news` DISABLE KEYS */;
+
+INSERT INTO `lbw_web_news` VALUES (1,'未命名的新闻','1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111','11111111111111111111111111111111111111111111111111','2011-10-10 00:55:41',1,'lincong',1);
+INSERT INTO `lbw_web_news` VALUES (2,'asdasdasd','asdasd','asdasd','2011-09-26 02:36:00',1,'lincong',1);
+INSERT INTO `lbw_web_news` VALUES (3,'12312312312','<img alt=\"\" src=\"http://maps.googleapis.com/maps/api/staticmap?center=31.230393%2C121.473704&amp;zoom=11&amp;size=558x360&amp;maptype=roadmap&amp;markers=31.230393%2C121.473704&amp;language=zh_CN&amp;sensor=false\" />','','2011-10-28 02:37:00',1,'lincong',1);
+INSERT INTO `lbw_web_news` VALUES (4,'132123','asdasdasd','asdasdasd','0000-00-00 00:00:00',1,'lincong',1);
+INSERT INTO `lbw_web_news` VALUES (5,'asdasd','sdasd','sdasd','0000-00-00 00:00:00',1,'lincong',1);
+INSERT INTO `lbw_web_news` VALUES (6,'asdasd','sdasd','sdasd','0000-00-00 00:00:00',1,'lincong',1);
+INSERT INTO `lbw_web_news` VALUES (7,'wqdqwda','<img src=\"/upload/image/20111010/20111010183531_53931.jpg\" alt=\"\" />','此条新闻没有文本内容','0000-00-00 00:00:00',1,'lincong',1);
+/*!40000 ALTER TABLE `lbw_web_news` ENABLE KEYS */;
+UNLOCK TABLES;
+
+#
+# Source for table lbw_web_news_type
+#
+
+DROP TABLE IF EXISTS `lbw_web_news_type`;
+CREATE TABLE `lbw_web_news_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(12) DEFAULT NULL,
+  `sort` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+#
+# Dumping data for table lbw_web_news_type
+#
+LOCK TABLES `lbw_web_news_type` WRITE;
+/*!40000 ALTER TABLE `lbw_web_news_type` DISABLE KEYS */;
+
+INSERT INTO `lbw_web_news_type` VALUES (1,'新闻',0);
+/*!40000 ALTER TABLE `lbw_web_news_type` ENABLE KEYS */;
+UNLOCK TABLES;
 
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
