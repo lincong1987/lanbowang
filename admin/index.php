@@ -45,6 +45,7 @@ function f_addTab(tabid, text, url){
 }
 
 $(document).ready(function(){
+	$("#userInfo").html(getHello() + user.nid + ", 欢迎登陆" + system.company);	
 	$("#layout1").ligerLayout({leftWidth: 200, topHeight:50});
 	
 	//Tab
@@ -87,14 +88,14 @@ $(document).ready(function(){
 	});
 </script>
 <style>
-body{ text-align:inherit; overflow:hidden}
+body{ text-align:left; overflow:hidden}
 #pageloading{position:absolute; left:0px; top:0px; background:white url(../src/img/loading.gif) no-repeat center; width:100%; height:100%; height:700px; z-index:99999;}
 .l-link{ display:block; height:26px; line-height:26px; padding-left:10px; text-decoration:underline; color:#333;}
 
 .headerNav  { background-color:#030b1d; }
 .headerNav .logo { background:url(../src/flash/logo_1.png) no-repeat; float:left; height:50px; text-indent:-1000px; width:250px;}
 .headerNav .nav{ height:21px; position:absolute; right:0; top:8px; z-index:31;	 display:block; }
-.headerNav .nav li { float:left; margin-left:-1px; padding:0 8px; line-height:11px; background:url(../src/img/listLine.png) no-repeat; }
+.headerNav .nav li { float:left; margin-left:1px; padding:0 8px; line-height:11px; background:url(../src/img/listLine.png) no-repeat; }
 .headerNav .nav li a { color:#b9ccda;}
 .headerNav .nav ul{ margin:0; padding:0}
 
@@ -105,26 +106,16 @@ body{ text-align:inherit; overflow:hidden}
 	<div id="pageloading"></div>
     
     <div id="layout1">
-        <div position="top" style="background:#030b1d; color:White; height:50px; line-height:50px; padding-left:10px">
-            
-            
-        
+        <div position="top" style="background:#030b1d; color:White; height:50px; line-height:50px; padding-left:10px"> 
    			<div class="headerNav"> 
 				<a class="logo" href="#">标志</a> 
 				<ul class="nav">
-					<li><a href="changepwd.html" target="dialog" width="600">设置</a></li> 
-					<li><a href="http://www.cnblogs.com/dwzjs" target="_blank">博客</a></li> 
-					<li><a href="http://weibo.com/dwzui" target="_blank">微博</a></li> 
-					<li><a href="http://bbs.dwzjs.com" target="_blank">论坛</a></li> 
-					<li><a href="#" onclick="loginOut();">退出</a></li> 
+                	<li><span id="userInfo"></span></li>
+					<li><a href="#" onclick="userPasswordModi();">密码修改</a></li>
+					<li><a href="#" onclick="loginOut();">退出</a></li>
 				</ul>
-			</div>              
-            
-            
-            
-                  
-        </div>
-        
+			</div>
+        </div>        
         
 <!-- <div position="left">-->
         <div position="left"  title="主要菜单" id="accordion1"> 
@@ -133,8 +124,9 @@ body{ text-align:inherit; overflow:hidden}
                             <li isexpand="true">
                             	<span>新闻管理</span>
                                 <ul>
-                                	<li url="user_manage_add.php"><span>添加新闻</span></li>
-                                    <li url="user_manage.php"><span>新闻管理</span></li>                            
+                                	<li url="news_manage_add.php"><span>添加新闻</span></li>
+                                    <li url="news_manage.php"><span>新闻管理</span></li>
+                                    <li url="news_type_manage.php"><span>新闻类型管理</span></li>                          
                             	</ul>
 							</li>                         
                             <li isexpand="false">

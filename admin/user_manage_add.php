@@ -17,9 +17,7 @@ echo $systemHead["meta"].
 
 
 <script>
-$(function() {
-
-	
+$(function() {	
 	$.metadata.setType("attr", "validate");
 	var v = $("form").validate({
 		debug: false,
@@ -44,7 +42,6 @@ $(function() {
 	});
 	
 	$("form").ligerForm();
-
 });
 
 

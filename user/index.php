@@ -84,7 +84,7 @@ $(document).ready(function(){
 	});
 </script>
 <style>
-body{ text-align:inherit; overflow:hidden}
+body{ text-align:left; overflow:hidden}
 #pageloading{position:absolute; left:0px; top:0px; background:white url(../src/img/loading.gif) no-repeat center; width:100%; height:100%; height:700px; z-index:99999;}
 .l-link{ display:block; height:26px; line-height:26px; padding-left:10px; text-decoration:underline; color:#333;}
 .headerNav  { background-color:#030b1d; }
@@ -108,18 +108,7 @@ body{ text-align:inherit; overflow:hidden}
 					<li><a href="#" onclick="userPasswordModi();">密码修改</a></li>
 					<li><a href="#" onclick="loginOut();">退出</a></li>
 				</ul>
-			</div>   
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
+			</div>
         </div>
         
         

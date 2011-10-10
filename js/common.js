@@ -10,17 +10,34 @@ $.NAV = {
 		init : function(){
 			$('#nav-tab ul li a').each(function(){
 				$(this).before($(this).clone().removeClass().addClass('hoverMenu'));
+				if($.type($(this).attr("sub")) != "undefined"){$(this).addClass("hasSub");}
 			});
 			
 			$('#nav-tab ul li').hover(function(){
-				$(this).find('.hoverMenu').stop().animate({marginTop:'0px'},200);
+				$(".sub").slideUp(50);
+				$(this).find('.hoverMenu').stop().animate({marginTop:'0px'},200,function(){
+					var _main = $(this);
+					if($.type($(this).attr("sub")) != "undefined"){
+						var _sub = $(this).attr("sub");						
+						$("#"+_sub+"[class=sub]").css({left:_main.offset().left+"px"}).slideDown(300);
+						}
+					});
 			},
 			function(){
-				$(this).find('.hoverMenu').stop().animate({marginTop:'-34px'},200);
+							
+				$(this).find('.hoverMenu').stop().animate({marginTop:'-34px'},200,function(){
+					var _main = $(this);
+					if($.type($(this).attr("sub")) != "undefined"){
+						var _sub = $(this).attr("sub");
+						$("#"+_sub+"[class=sub]").mouseleave(function(){
+							$(this).slideUp(300);
+							})
+						}
+					});
 			});				
 			}
 	}
-	
+
 $.SET = {
 	title : function(){
 		if(arguments.length<1){
@@ -48,7 +65,7 @@ $.SET = {
  * @date 2011/10/7
  */
 //输出欢迎信息
-function getHello(){var now=new Date(),hour=now.getHours();if(hour<6){return"凌晨了，请好好休息!"}else if(hour<9){return"早上好!"}else if(hour<12){return"上午好!"}else if(hour<14){return"中午好!"}else if(hour<17){return"下午好!"}else if(hour<19){return"傍晚好!"}else if(hour<22){return"晚上好!"}else{return"夜深了，请好好休息!"}}
+function getHello(){var now=new Date(),hour=now.getHours();if(hour<6){return"凌晨好!"}else if(hour<9){return"早上好!"}else if(hour<12){return"上午好!"}else if(hour<14){return"中午好!"}else if(hour<17){return"下午好!"}else if(hour<19){return"傍晚好!"}else if(hour<22){return"晚上好!"}else{return"夜深了!"}}
 /**
  * 快速登录
  * @author lincong

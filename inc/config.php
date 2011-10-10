@@ -140,10 +140,13 @@ define("JS_DIALOG", '<script src="'.dialogPath.'" language="javascript" type="te
 define("jqueryPath", WEB_PATH."js/jquery-".$jqueryVersion.".min.js?ver=".$jqueryVersion);
 define("JS_JQUERY", '<script src="'.jqueryPath.'" language="javascript" type="text/javascript"></script>
 					');
-define("JS_COMMON", '<script src="'.WEB_JS.'/common.js" language="javascript" type="text/javascript"></script>
+define("JS_COMMON", '<script src="'.WEB_JS.'common.js" language="javascript" type="text/javascript"></script>
 					');					
 define("JS_BASE", '<script src="'.WEB_JS.'base.js" language="javascript" type="text/javascript"></script>
 					');
+define("KINDEDITOR", '<script src="'.WEB_PATH.'src/kindeditor/kindeditor-min.js" language="javascript" type="text/javascript"  charset="utf-8"></script>
+					<script src="'.WEB_PATH.'src/kindeditor/lang/zh_CN.js" language="javascript" type="text/javascript"  charset="utf-8"></script>
+					');				
 define("LIB_LIGERUI", '<link href="'.WEB_PATH.'src/LigerUI/lib/ligerUI/skins/'.$ligerUISkin.'/css/ligerui-all.css" rel="stylesheet" type="text/css" />
 					 <script src="'.WEB_PATH.'src/LigerUI/lib/ligerUI/js/ligerui.min.js" type="text/javascript"></script>
 					 <script src="'.WEB_PATH.'src/LigerUI/lib/jquery-validation/jquery.validate.min.js" type="text/javascript"></script>
@@ -152,10 +155,6 @@ define("LIB_LIGERUI", '<link href="'.WEB_PATH.'src/LigerUI/lib/ligerUI/skins/'.$
 
 define("CSS_BASE", '<link rel="stylesheet" type="text/css" href="'.WEB_CSS.'base.css"/>
 					');
-
-
-
-
 
 
 

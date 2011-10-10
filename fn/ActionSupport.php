@@ -8,7 +8,7 @@
  *
  */
 class ActionSupport{
-	protected $mysqlConfig = array();
+	public $mysqlConfig = array();
 	
 	//定义成员变量
 	const ERROR = "error";
