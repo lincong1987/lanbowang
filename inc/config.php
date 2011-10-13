@@ -91,6 +91,7 @@ $systemHead = array(
 	"meta" => '<link rel="icon" href="'.WEB_PATH.'favicon.ico" type="image/x-icon" />
 		<link rel="shortcut icon" href="'.WEB_PATH.'favicon.ico" type="image/x-icon" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta http-equiv="X-UA-Compatible" content="IE=7" />
 		<meta name="copyright" content="'.$system["host"].',版权所有" />
 		<meta name="description" content="'.$system["description"].'" />
 		<meta name="keywords" content="'.$system["keywords"].'" />
@@ -140,9 +141,9 @@ define("JS_DIALOG", '<script src="'.dialogPath.'" language="javascript" type="te
 define("jqueryPath", WEB_PATH."js/jquery-".$jqueryVersion.".min.js?ver=".$jqueryVersion);
 define("JS_JQUERY", '<script src="'.jqueryPath.'" language="javascript" type="text/javascript"></script>
 					');
-define("JS_COMMON", '<script src="'.WEB_JS.'common.js" language="javascript" type="text/javascript"></script>
+define("JS_COMMON", '<script src="'.WEB_JS.'common.js" charset="utf-8" language="javascript" type="text/javascript"></script>
 					');					
-define("JS_BASE", '<script src="'.WEB_JS.'base.js" language="javascript" type="text/javascript"></script>
+define("JS_BASE", '<script src="'.WEB_JS.'base.js" charset="utf-8" language="javascript" type="text/javascript"></script>
 					');
 define("KINDEDITOR", '<script src="'.WEB_PATH.'src/kindeditor/kindeditor-min.js" language="javascript" type="text/javascript"  charset="utf-8"></script>
 					<script src="'.WEB_PATH.'src/kindeditor/lang/zh_CN.js" language="javascript" type="text/javascript"  charset="utf-8"></script>

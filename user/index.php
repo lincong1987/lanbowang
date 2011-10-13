@@ -11,17 +11,19 @@ $u = user::getUserSession();
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+
 <?php
 //导入meta数据及js库
 echo $systemHead["meta"].
 	$systemHead["title"].
+  CSS_BASE.
 	JS_JQUERY.
+  JS_COMMON.
+  JS_BASE.
 	JS_DIALOG.
 	LIB_LIGERUI;
 ?>
-<script src="../js/common.js" language="javascript" type="text/javascript"></script>
-<script src="../js/base.js" language="javascript" type="text/javascript"></script>
+
 <script>
 
 var tab = null;
