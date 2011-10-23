@@ -59,6 +59,35 @@ $.SET = {
 		}
 	}
 
+$.PAGER = {
+	cfg : {
+		page : 1,
+		pageCount : 20,
+		totalCount : 1,
+		url : "?page=",
+		obj : null
+		},
+	init : function(cfg){
+		var that = this;
+		//alert(cfg.obj.size())
+		if(cfg.obj.size() < 1){alert("pagerElement is not found!"); return false;}
+		var PageClick = function(pageclickednumber) {
+			//var that = this;
+			location.href = that.cfg.url + pageclickednumber;
+			}		
+		cfg.obj.pager({ 
+			pagenumber : cfg.page || that.cfg.page,
+			pagecount: cfg.pageCount || that.cfg.pageCount,
+			totalCount: cfg.totalCount || that.cfg.totalCount,
+			buttonClickCallback : PageClick
+			});
+		}
+	}
+
+
+
+
+
 /**
  * 输出欢迎语
  * @author lincong

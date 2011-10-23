@@ -2,6 +2,54 @@
 include("ActionSupport.php");
 
 /**
+ *	@Desc	参数读取
+ *	@Author lincong
+ *	@Date	2011/10/16
+ */
+class param extends ActionSupport{
+	
+	/**	参数	*/
+	private $value;
+	private $key;
+	
+	/**
+	 *	@Desc:	用key读取参数
+	 *	@prama	$paramKey	
+	 */	
+	public function getParamValue($paramKey=""){
+		$sql = "select id, param_key, param_value from ".$this->mysqlConfig["db_perfix"]." where param_key = '{$paramKey}' ";
+		$rs = sqlRow($sql);
+		return parent::SUCCESS;
+		}
+
+	/**
+	 *	@Desc:	设置参数
+	 *	@prama	$paramValue	
+	 */	
+	public function setParamValue($paramValue){
+		$sql = "uptate ".$this->mysqlConfig["db_perfix"]." set param_value = '{$paramValue}'  where param_key = '{$paramKey}' ";
+		$rs = sqlExecute($sql);
+		return parent::SUCCESS;	
+		}
+	
+	/**
+	 *	@Desc:	添加
+	 *	@prama	$paramKey	
+	 */	
+	public function saveParam($paramKey, $paramValue){
+		$sql = "insert into ".$this->mysqlConfig["db_perfix"]." (param_value, param_key) values ('{$paramValue}', '{$paramKey}') ";
+		$rs = sqlExecute($sql);
+		return parent::SUCCESS;	
+		}	
+
+//	public function getParamList($paramKey=""){
+//		$sql = "select id, param_key, param_value from ".$this->mysqlConfig["db_perfix"]." where param_key = '{$paramKey}' ";
+//		$rs = sqlRow($sql);
+//		return parent::SUCCESS;
+//		}	
+	}
+
+/**
  *	首页初始化
  *	@Author lincong
  *	@Date	2011/10/09

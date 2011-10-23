@@ -128,14 +128,27 @@ body{ text-align:left; overflow:hidden}
                                     <li url="news_manage.php"><span>新闻管理</span></li>
                                     <li url="news_type_manage.php"><span>新闻类型管理</span></li>                          
                             	</ul>
-							</li>                         
+							</li>                      
                             <li isexpand="false">
                             	<span>用户</span>
                                 <ul>
                                 	<li url="user_manage_add.php"><span>添加用户</span></li>
                                     <li url="user_manage.php"><span>用户管理</span></li>                            
                             	</ul>
-							</li>                         
+							</li>
+                            
+                            <li isexpand="false">
+                            	<span>网站参数设置</span>
+                                <ul>
+                                	<li url="param_manage_modi.php?paramKey=auoutus"><span>关于我们</span></li>
+                                    <li url="news_manage.php"><span>新闻管理</span></li>
+                                    <li url="news_type_manage.php"><span>新闻类型管理</span></li>
+                                    <li url="param_manage.php"><span>参数列表</span></li>                   
+                            	</ul>
+							</li>
+                            
+                            
+                                                      
                          </ul>
                     </div>
                     <div title="系统信息">

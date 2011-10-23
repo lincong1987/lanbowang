@@ -1,60 +1,30 @@
-/*
-@20110915
-作者：林聪
-邮箱：lincong1987@gmail.com
-*/
+/**
+ *	Desc:	蓝博旺项目 基础CSS
+ *	
+ *	@Date	20110915
+ *	@Author	林聪
+ *	@Mail	lincong1987@gmail.com
+ */
 
 /*base*/
 
 body{ background:url(../src/img/bodybg.jpg) repeat-x #d8e8f7; text-align:center; font-family:tahoma, "微软雅黑" }
 
-body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
-	margin:0;
-	padding:0;
-}
-body, button, input, select, textarea {
-	font:12px/1.5 tahoma,arial,宋体;
-}
-h1, h2, h3, h4, h5, h6 {
-	font-size:100%;
-}
-address, cite, dfn, em, var {
-	font-style:normal;
-}
-code, kbd, pre, samp {
-	font-family:courier new,courier,monospace;
-}
-small {
-	font-size:12px;
-}
-ul, ol {
-	list-style:none outside none;
-}
-a {
-	text-decoration:none;
-}
-a:hover {
-	text-decoration:underline;
-}
-sup {
-	vertical-align:text-top;
-}
-sub {
-	vertical-align:text-bottom;
-}
-legend {
-	color:#000000;
-}
-fieldset, img {
-	border:0 none;
-}
-button, input, select, textarea {
-	font-size:100%;
-}
-table {
-	border-collapse:collapse;
-	border-spacing:0;
-}
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {margin:0;padding:0;}
+body, button, input, select, textarea {font:12px/1.5 tahoma,arial,宋体;}
+h1, h2, h3, h4, h5, h6 {font-size:100%;}
+address, cite, dfn, em, var {font-style:normal;}
+code, kbd, pre, samp {font-family:courier new,courier,monospace;}
+small {font-size:12px;}
+ul, ol {list-style:none outside none;}
+a {text-decoration:none;}
+a:hover {text-decoration:underline;}
+sup {vertical-align:text-top;}
+sub {vertical-align:text-bottom;}
+legend {color:#000000;}
+fieldset, img {border:0 none;}
+button, input, select, textarea {font-size:100%;}
+table {border-collapse:collapse;border-spacing:0;}
 
 .clearFix{ clear:both}
 
@@ -105,13 +75,11 @@ b9ad86
 
 #nav-tab ul li a, #nav-tab ul li a:visited{ color:#FFFfff; display:block; cursor:pointer;text-decoration:none;}
 #nav-tab ul li .on{ background:#144570;color:#1FADFF; text-decoration:none;}
-#nav-tab ul li .hasSub{
-	background-image: url("../src/img/nav.gif");
+#nav-tab ul li .hasSub{background-image: url("../src/img/nav.gif");
 	background-position:80px 17px;
 	background-repeat:no-repeat;
 	}
-#nav-tab ul li .hoverMenu, #nav-tab ul li .hoverMenu:visited{
-	margin-top:-34px;background:#144570;color:#1FADFF; text-decoration:none;
+#nav-tab ul li .hoverMenu, #nav-tab ul li .hoverMenu:visited{margin-top:-34px;background:#144570;color:#1FADFF; text-decoration:none;
 	}
 
 
@@ -163,8 +131,17 @@ b9ad86
 
 
 
+#index-aboutus{}
+#index-aboutus .head{}
+#index-aboutus .body{}
 
-
+/*pager*/
+#pager ul.pages{display:block; border:none; font-size:12px; margin:10px 0 50px; padding:0; font-family:Verdana; color:#357dce; padding-left:5px;}
+#pager ul.pages li{list-style:none; float:left; border:1px solid #ccc; text-decoration:none; margin:0 5px 0 0; padding:5px}
+#pager ul.pages li:hover{border:1px solid #357dce; color:#357dce}
+#pager ul.pages li.pgEmpty{border:1px solid #eee; color:#ccc}
+#pager ul.pages li.current{border:1px solid #fff; color:#357dce; font-weight:bold; background-color:#fff}
+#pager ul.pages li.pgDetail{border:1px solid #fff; }
 
 
 /*kandyTabs*/
