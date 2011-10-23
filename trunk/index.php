@@ -117,24 +117,14 @@ var system = <?php echo json_encode($system);?>;
 	<table align="center" width="950" border="0" cellpadding="0" cellspacing="0">
     	<tr>
         	<td width="250">
-            <div class="tab-show">
-            	<ol>
-                	<li><a>新闻</a></li>
-                    <li class="more"><a>more...</a></li>
-                </ol>
-                <ul>
-                	<li><a>测试测试测试测试测试测试</a> <span>2011-09-25</span></li>
-                    <li><a>测试测试测试测试测试测试</a> <span>2011-09-25</span></li>
-                    <li><a>测试测试测试测试测试测试</a> <span>2011-09-25</span></li>
-                    <li><a>测试测试测试测试测试测试</a> <span>2011-09-25</span></li>
-                    <li><a>测试测试测试测试测试测试</a> <span>2011-09-25</span></li>
-                    <li><a>测试测试测试测试测试测试</a> <span>2011-09-25</span></li>
-                    <li><a>测试测试测试测试测试测试</a> <span>2011-09-25</span></li>
-                    <li><a>测试测试测试测试测试测试</a> <span>2011-09-25</span></li>
-                    <li><a>测试测试测试测试测试测试</a> <span>2011-09-25</span></li>
-                    <li><a>测试测试测试测试测试测试</a> <span>2011-09-25</span></li>
-                </ul>
-            </div></td>
+            	<div id="index-aboutus">
+                	<div class="head">
+                    	关于蓝博旺 about us
+                    </div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </td>
         	<td width="0">
             <div class="tab-show">
             	<ol>

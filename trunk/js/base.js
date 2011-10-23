@@ -1,3 +1,109 @@
+//
+// jquery pager 修改版 
+// By lincong
+// @icinfo.cn
+//
+// 调用方式
+// $("#pager").pager({ pagenumber: 当前的page, pagecount: 总页数, buttonClickCallback:PageClick回调, totalCount:总记录数（注：可以为空）});
+//绑定PageClick，这里使用的是跳转，也可以改成AJAX方式 pageclickednumber 点击的
+//PageClick = function(pageclickednumber) {window.location.href="<?php echo $url; ?>"+pageclickednumber;}
+
+(function($) {	
+    $.fn.pager = function(options) {
+        var opts = $.extend({},
+        $.fn.pager.defaults, options);
+        return this.each(function() {
+            $(this).empty().append(renderpager(parseInt(options.pagenumber), parseInt(options.pagecount), options.buttonClickCallback,parseInt(options.totalCount)));
+			
+            $('.pages li').mouseover(function() {
+                document.body.style.cursor = "pointer"
+
+            }).mouseout(function() {
+                document.body.style.cursor = "auto"
+
+            })
+
+        })
+
+    };
+    function renderpager(pagenumber, pagecount, buttonClickCallback,totalCount) {
+		//alert(totalCount)
+        var $pager = $('<ul class="pages"></ul>');
+		
+        $pager.append(renderButton('第一页', pagenumber, pagecount, buttonClickCallback)).append(renderButton('前一页', pagenumber, pagecount, buttonClickCallback));
+        var startPoint = 1;
+        var endPoint = 9;
+        if (pagenumber > 4) {
+            startPoint = pagenumber - 4;
+            endPoint = pagenumber + 4
+
+        }
+        if (endPoint > pagecount) {
+            startPoint = pagecount - 8;
+            endPoint = pagecount
+
+        }
+        if (startPoint < 1) {
+            startPoint = 1
+
+        }
+        for (var page = startPoint; page <= endPoint; page++) {
+            var currentButton = $('<li class="page-number">' + (page) + '</li>');
+            page == pagenumber ? currentButton.addClass('pgCurrent') : currentButton.click(function() {
+                buttonClickCallback(this.firstChild.data)
+
+            });
+            currentButton.appendTo($pager)
+
+        }
+        $pager.append(renderButton('下一页', pagenumber, pagecount, buttonClickCallback)).append(renderButton('最后一页', pagenumber, pagecount, buttonClickCallback));
+		var totalCount = isNaN(totalCount) ? "" : "共"+totalCount+"条数据 ";
+		pn = pagecount == 0 ? 0 : pagenumber;
+		$pager.append("<li class='pgDetail'>"+totalCount+" 共"+pagecount+"页 现在显示第"+pn+"页</li>");
+        return $pager
+
+    }
+    function renderButton(buttonLabel, pagenumber, pagecount, buttonClickCallback) {
+        var $Button = $('<li class="pgNext">' + buttonLabel + '</li>');
+        var destPage = 1;
+        switch (buttonLabel) {
+            case "第一页":
+            destPage = 1;
+            break;
+            case "前一页":
+            destPage = pagenumber - 1;
+            break;
+            case "下一页":
+            destPage = pagenumber + 1;
+            break;
+            case "最后一页":
+            destPage = pagecount;
+            break
+
+        }
+        if (buttonLabel == "第一页" || buttonLabel == "前一页") {
+            pagenumber <= 1 ? $Button.addClass('pgEmpty') : $Button.click(function() {
+                buttonClickCallback(destPage)
+
+            })
+
+        } else {
+            pagenumber >= pagecount ? $Button.addClass('pgEmpty') : $Button.click(function() {
+                buttonClickCallback(destPage)
+
+            })
+
+        }
+        return $Button
+
+    }
+    $.fn.pager.defaults = {
+        pagenumber: 1,
+        pagecount: 1,
+		totalCount:0
+    }
+})(jQuery);
+
 /*
  * jQuery UI 1.7.2
  *
@@ -9870,7 +9976,7 @@ MZ.Util.makeMstoreStar = function (star, star1,star2,star3){   //软件中心使
 
 (function ($) {
 //得到select项的个数
-$.fn.size = function(){
+$.fn.optSize = function(){
     return $(this).get(0).options.length;
 }
 

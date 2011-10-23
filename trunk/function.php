@@ -156,12 +156,14 @@ function jsonError($state="undefined",$msg="undefined",$error="undefined", $type
 * @return bolean
 */
 function getResult($sql,$msg = "",$type = "html"){
+	global $system;
+	global $mysqlConfig;
 	$msg = !empty($msg) ? $msg : "";
-		  mysql_query("set names utf8");
-		  $result = mysql_query($sql) or error("getResult Filed<br><span style='font-size:12px; font-family:Verdana;'>{$msg}<br>{$sql}<br>".mysql_error()."<BR>PROJECT_VER:{$_SESSION["version"]}</span>",$msg,$type);
-		  //$result=mysql_query($sql) or error("getResult Filed<br>{$msg}<br>PROJECT_VER:{$_SESSION["version"]}</span>");
-		  return $result;
-		  @mysql_free_result($result);
+	mysql_query("set names {$mysqlConfig["db_charset"]}");
+	$result = mysql_query($sql) or error("getResult Filed<br><span style='font-size:12px; font-family:Verdana;'>{$msg}<br>{$sql}<br>".mysql_error()."<BR>PROJECT_VER:{$system["version"]}</span>",$msg,$type);
+	//$result=mysql_query($sql) or error("getResult Filed<br>{$msg}<br>PROJECT_VER:{$_SESSION["version"]}</span>");
+	return $result;
+	@mysql_free_result($result);
 		  //mysql_close($conn);
 	}
 	
@@ -175,8 +177,8 @@ function getResult($sql,$msg = "",$type = "html"){
 */
 function sqlExecute($sql,$msg="",$type="html"){
 	$msg = empty($msg) ? "" : $msg;
-	mysql_query("set names utf8");
-	$bool=mysql_query($sql) or error("sqlExecute Filed<br><span style='font-size:12px; font-family:Verdana;'>{$msg}<br>{$sql}<br>".mysql_error()."<BR>PROJECT_VER:{$_SESSION["version"]}</span>",$msg,$type);
+	mysql_query("set names {$mysqlConfig["db_charset"]}");
+	$bool=mysql_query($sql) or error("sqlExecute Filed<br><span style='font-size:12px; font-family:Verdana;'>{$msg}<br>{$sql}<br>".mysql_error()."<BR>PROJECT_VER:{$system["version"]}</span>",$msg,$type);
 	return $bool;
 }
 
