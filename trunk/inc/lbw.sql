@@ -98,6 +98,31 @@ INSERT INTO `lbw_index_top_msg` VALUES (1,'------------------sssss\r\n\r\nasdasd
 UNLOCK TABLES;
 
 #
+# Source for table lbw_param
+#
+
+DROP TABLE IF EXISTS `lbw_param`;
+CREATE TABLE `lbw_param` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `param_key` varchar(255) DEFAULT NULL,
+  `param_value` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+#
+# Dumping data for table lbw_param
+#
+LOCK TABLES `lbw_param` WRITE;
+/*!40000 ALTER TABLE `lbw_param` DISABLE KEYS */;
+
+INSERT INTO `lbw_param` VALUES (1,'index-aboutus','挂吧用我们');
+INSERT INTO `lbw_param` VALUES (2,'asdasd','adasdasdad');
+INSERT INTO `lbw_param` VALUES (3,'aasdasd','asdasd');
+INSERT INTO `lbw_param` VALUES (4,'asdasdasd','asd');
+/*!40000 ALTER TABLE `lbw_param` ENABLE KEYS */;
+UNLOCK TABLES;
+
+#
 # Source for table lbw_user
 #
 
@@ -175,40 +200,7 @@ CREATE TABLE `lbw_web_news` (
   `uid` varchar(16) DEFAULT NULL,
   `isPublish` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
-#
-# Dumping data for table lbw_web_news
-#
-LOCK TABLES `lbw_web_news` WRITE;
-/*!40000 ALTER TABLE `lbw_web_news` DISABLE KEYS */;
-
-INSERT INTO `lbw_web_news` VALUES (1,'未命名的新闻','1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111','11111111111111111111111111111111111111111111111111','2011-10-10 00:55:41',1,'lincong',1);
-INSERT INTO `lbw_web_news` VALUES (2,'asdasdasd','asdasd','asdasd','2011-09-26 02:36:00',1,'lincong',1);
-INSERT INTO `lbw_web_news` VALUES (3,'12312312312','<img alt=\"\" src=\"http://maps.googleapis.com/maps/api/staticmap?center=31.230393%2C121.473704&amp;zoom=11&amp;size=558x360&amp;maptype=roadmap&amp;markers=31.230393%2C121.473704&amp;language=zh_CN&amp;sensor=false\" />','','2011-10-28 02:37:00',1,'lincong',1);
-INSERT INTO `lbw_web_news` VALUES (4,'132123','asdasdasd','asdasdasd','0000-00-00 00:00:00',1,'lincong',1);
-INSERT INTO `lbw_web_news` VALUES (5,'asdasd','sdasd','sdasd','0000-00-00 00:00:00',1,'lincong',1);
-INSERT INTO `lbw_web_news` VALUES (6,'asdasd','sdasd','sdasd','0000-00-00 00:00:00',1,'lincong',1);
-INSERT INTO `lbw_web_news` VALUES (7,'wqdqwda','<img src=\"/upload/image/20111010/20111010183531_53931.jpg\" alt=\"\" />','此条新闻没有文本内容','0000-00-00 00:00:00',1,'lincong',1);
-/*!40000 ALTER TABLE `lbw_web_news` ENABLE KEYS */;
-UNLOCK TABLES;
-
-#
-# Source for table lbw_web_news
-#
-
-DROP TABLE IF EXISTS `lbw_web_news`;
-CREATE TABLE `lbw_web_news` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `news_title` varchar(255) NOT NULL DEFAULT '未命名的新闻',
-  `news_content` text,
-  `news_content_short` varchar(50) DEFAULT NULL,
-  `news_post_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `news_type_id` int(11) DEFAULT '1',
-  `uid` varchar(16) DEFAULT NULL,
-  `isPublish` int(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 #
 # Dumping data for table lbw_web_news
