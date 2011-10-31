@@ -121,7 +121,9 @@ var system = <?php echo json_encode($system);?>;
                 	<div class="head">
                     	关于蓝博旺 about us
                     </div>
-                    <div></div>
+                    <div>
+                    	<?php $param = new param(); echo $param->getParamValue("index-aboutus");?>
+                    </div>
                     <div></div>
                 </div>
             </td>

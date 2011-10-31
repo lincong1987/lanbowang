@@ -125,10 +125,12 @@ $dialogSkin = 'default';
 		可选 1.5.2 , 1.6.2 , 1.6.4，
 			有新版本需要在js/下添加
 */
-$jqueryVersion = '1.5.2';
+$jqueryVersion = '1.6.4';
 
-
-$ligerUISkin = 'Aqua';
+/**
+ * Silvery Aqua
+ */
+$ligerUISkin = 'Silvery';
 
 /*
 	定义各种JS库的路径

@@ -1,6 +1,7 @@
 <?php
 include("ActionSupport.php");
 
+
 /**
  *	@Desc	参数读取
  *	@Author lincong
@@ -17,9 +18,10 @@ class param extends ActionSupport{
 	 *	@prama	$paramKey	
 	 */	
 	public function getParamValue($paramKey=""){
-		$sql = "select id, param_key, param_value from ".$this->mysqlConfig["db_perfix"]." where param_key = '{$paramKey}' ";
+		$sql = "select id, param_key, param_value from ".$this->mysqlConfig["db_perfix"]."param where param_key = '{$paramKey}' ";
+		if(sqlCount($sql) == 0){return "param not found";}
 		$rs = sqlRow($sql);
-		return parent::SUCCESS;
+		return $rs["param_value"];
 		}
 
 	/**
@@ -27,7 +29,7 @@ class param extends ActionSupport{
 	 *	@prama	$paramValue	
 	 */	
 	public function setParamValue($paramValue){
-		$sql = "uptate ".$this->mysqlConfig["db_perfix"]." set param_value = '{$paramValue}'  where param_key = '{$paramKey}' ";
+		$sql = "uptate ".$this->mysqlConfig["db_perfix"]."param set param_value = '{$paramValue}'  where param_key = '{$paramKey}' ";
 		$rs = sqlExecute($sql);
 		return parent::SUCCESS;	
 		}
@@ -37,7 +39,7 @@ class param extends ActionSupport{
 	 *	@prama	$paramKey	
 	 */	
 	public function saveParam($paramKey, $paramValue){
-		$sql = "insert into ".$this->mysqlConfig["db_perfix"]." (param_value, param_key) values ('{$paramValue}', '{$paramKey}') ";
+		$sql = "insert into ".$this->mysqlConfig["db_perfix"]."param (param_value, param_key) values ('{$paramValue}', '{$paramKey}') ";
 		$rs = sqlExecute($sql);
 		return parent::SUCCESS;	
 		}	
