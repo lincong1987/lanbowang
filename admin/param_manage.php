@@ -135,6 +135,7 @@ function doMod(id){
 			});			
 			},
 		ok : function(){
+			alert(3)
 			paramValue = editor.html();
 			$.post("news_manage_action.php?action=doMod", {id:id, paramKey:paramKey, paramValue:paramValue}, function(json){
 				if(json.state == "fail"){
