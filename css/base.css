@@ -7,8 +7,8 @@
  */
 
 /*base*/
-
-body{ background:url(../src/img/bodybg.jpg) repeat-x #d8e8f7; text-align:center; font-family:tahoma, "微软雅黑" }
+*{ font-family: "微软雅黑",tahoma;}
+body{ background:#fff; text-align:center; font-family: "微软雅黑",tahoma; font-size:16px; font-weight:bold }
 
 body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {margin:0;padding:0;}
 body, button, input, select, textarea {font:12px/1.5 tahoma,arial,宋体;}
@@ -34,13 +34,50 @@ b9ad86
 
 
 */
+.header{ height:99px; width:940px; text-align:center; margin:auto; background:url(../src/images/header_bg.gif) no-repeat}
+.header #login_form{ margin: 0px 810px; color:#fff; font-size:16px; position:absolute; font-weight:;width: 200px; height: 50px; padding: 10px;}
+.header #login_form ul{}
+.header #login_form ul li{ display:inline-block; float:left}
+.header #login_form ul li a{ display:inline-block; width:50px}
+.header #login_form ul li a:hover{cursor:pointer}
+.header #login_form ul li span{}
 
+.header_bar{height:10px; width:940px; text-align:center; background:url(../src/images/1_09.png) no-repeat; margin:4px auto}
 
-
-
-
+.nav{height:29px; width:940px; text-align:center; margin:auto; background:url(../src/images/nav_bg.gif) no-repeat; color:#FFF; font-size:14px;}
+.nav ul{float: left;}
+.nav ul li{display:inline-block; float:left}
+.nav ul li a{display:inline-block; width:125px; font-weight:bold; padding:3px 0 0 0}
+.nav ul li a:hover{ cursor:pointer}
+.nav ul li span{display:inline-block; font-size:9px; font-weight:bold; padding:5px 0 0 0}
+.nav ul.fast_search #fast_search{ margin:0; padding:0}
+.nav ul.fast_search #fast_search #fast_search_text{ border:0 none; height:20px; line-height:20px; padding:0 0 0 20px; width:100px; margin: 4px 0 0 -20px; background:url(../src/images/search_ico.gif) 5px no-repeat #fff}
 /*foot*/
-.footer{ color:#666}
+.footer{ color:#000;  font-family: "微软雅黑",tahoma; font-size:14px; font-weight:bold; width:940px; text-align:center; margin:auto}
+.footer .sitemap{ color:#999 !important; height:30px; margin-top:20px}
+.footer .sitemap a{ display:inline-block; width:100px}
+.footer .sitemap a:hover{ cursor:pointer}
+.footer .sitemap span{ display:inline-block}
+.footer ul{}
+.footer ul li{ display:block; font-size:10px;}
+.footer ul .icp{ float:left}
+.footer ul .copyright{ float:right}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
