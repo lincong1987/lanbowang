@@ -1,6 +1,11 @@
 <?php include("../function.php");
+$id = isset($_REQUEST["id"]) ? $_REQUEST["id"] : "";
+if(empty($id)){
+	error("非法访问！");
+	}
 $news = new news();
 $newTypeArray = $news->getNewsType();
+$rs = $news->getNewsById($id);
 $user = new user();
 $userSession = $user->getUserSession();
 ?>
@@ -75,33 +80,34 @@ KindEditor.ready(function(K) {
 </head>
 
 <body>
-<form name="form1" method="post" action="news_manage_action.php?action=add"
-id="form1">
+<form name="form1" method="post" action="news_manage_action.php?action=doMod"
+id="form1"><div><a href="news_manage.php">返回管理</a></div>
+<input value="<?php echo $rs[0]["id"];?>" name="id" type="hidden" />
   <div></div>
   <table cellpadding="0" cellspacing="0" class="l-table-edit">
     <tr>
       <td align="right" class="l-table-edit-td"> 新闻标题: </td>
-      <td align="left" class="l-table-edit-td"><input name="news_title" type="text" id="news_title" ltype="text" ligerui="{width:'500'}" validate="{required:true,minlength:3,maxlength:32}" /></td>
+      <td align="left" class="l-table-edit-td"><input value="<?php echo $rs[0]["news_title"];?>" name="news_title" type="text" id="news_title" ltype="text" ligerui="{width:'500'}" validate="{required:true,minlength:3,maxlength:32}" /></td>
       <td align="left"></td>
     </tr>
     <tr>
       <td align="right" class="l-table-edit-td"> 是否发布: </td>
       <td align="left" class="l-table-edit-td">
-        <input id="isPublish_1" type="radio" name="isPublish" value="1" checked="checked" />
+        <input id="isPublish_1" type="radio" name="isPublish" value="1" <?php if($rs[0]["isPublish"] == 1){echo "checked";}?> />
       	<label for="isPublish_1">是</label>      
-     	<input id="isPublish_2" type="radio" name="isPublish" value="0" />
+     	<input id="isPublish_2" type="radio" name="isPublish" value="0" <?php if($rs[0]["isPublish"] == 0){echo "checked";}?>/>
         <label for="isPublish_2">否</label></td>
       <td align="left"></td>
     </tr>
     <tr>
       <td align="right" class="l-table-edit-td"> 发布时间: </td>
-      <td align="left" class="l-table-edit-td"><input name="news_post_time" type="text" id="news_post_time" ltype="date" ligerui="{showTime: true, format:'yyyy-MM-dd hh:mm:ss', width:'200'}" validate=""
+      <td align="left" class="l-table-edit-td"><input value="<?php echo $rs[0]["news_post_time"];?>" name="news_post_time" type="text" id="news_post_time" ltype="date" ligerui="{showTime: true, format:'yyyy-MM-dd hh:mm:ss', width:'200'}" validate=""
                 /></td>
       <td align="left"></td>
     </tr>
     <tr>
       <td align="right" class="l-table-edit-td"> 作者: </td>
-      <td align="left" class="l-table-edit-td"><input readonly="readonly" disabled="disabled" name="nid" type="text" id="nid" ltype='text' value="<?php echo $userSession["nid"];?>"  />
+      <td align="left" class="l-table-edit-td"><input readonly="readonly" disabled="disabled" name="nid" type="text" id="nid" ltype='text' value="<?php echo $rs[0]["uid"];?>"  />
       <input name="uid" type="hidden" id="uid" value="<?php echo $userSession["uid"];?>"  /></td>
       <td align="left"></td>
     </tr>
@@ -118,7 +124,7 @@ id="form1">
     </tr>
     <tr>
       <td align="right" class="l-table-edit-td"> 内容: </td>
-      <td align="left" class="l-table-edit-td"><textarea cols="100" rows="4" class="l-textarea" name="news_content" id="news_content" style="" validate="{}"></textarea></td>
+      <td align="left" class="l-table-edit-td"><textarea cols="100" rows="4" class="l-textarea" name="news_content" id="news_content" style="" validate="{}"><?php echo $rs[0]["news_content"];?></textarea></td>
       <td align="left"></td>
     </tr>
   </table>

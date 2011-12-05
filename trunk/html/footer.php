@@ -8,7 +8,8 @@
         <a>人力资源</a> <span>|</span>
         <a>联系我们</a>
     </div>
-	<div> 
+    <div class="clearFix" style="background:#f8f8f8; height:5px"></div>
+	<div>
     	<ul>
         	<li class="icp">浙ICP备000000000000号 Designed by Mr.L</li>
             <li class="copyright">Copyright ©2011 lanbowang All Rights Reserved. </li>

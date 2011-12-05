@@ -69,13 +69,14 @@ $.PAGER = {
 		},
 	init : function(cfg){
 		var that = this;
+		that.cfg = cfg;
 		//alert(cfg.obj.size())
-		if(cfg.obj.size() < 1){alert("pagerElement is not found!"); return false;}
+		if(that.cfg.obj.size() < 1){alert("pagerElement is not found!"); return false;}
 		var PageClick = function(pageclickednumber) {
 			//var that = this;
 			location.href = that.cfg.url + pageclickednumber;
 			}		
-		cfg.obj.pager({ 
+		that.cfg.obj.pager({ 
 			pagenumber : cfg.page || that.cfg.page,
 			pagecount: cfg.pageCount || that.cfg.pageCount,
 			totalCount: cfg.totalCount || that.cfg.totalCount,
@@ -95,15 +96,35 @@ $.PAGER = {
  */
 //输出欢迎信息
 function getHello(){var now=new Date(),hour=now.getHours();if(hour<6){return"凌晨好!"}else if(hour<9){return"早上好!"}else if(hour<12){return"上午好!"}else if(hour<14){return"中午好!"}else if(hour<17){return"下午好!"}else if(hour<19){return"傍晚好!"}else if(hour<22){return"晚上好!"}else{return"夜深了!"}}
+
+/**
+ *
+ *
+ */
+function show_fastLoginForm_div(o){
+	$.dialog({
+		id: "__fastLoginForm_div",
+		title: "用户登录",
+		content: document.getElementById("fastLoginForm_div"),
+		lock: true,
+		background: '#000', // 背景色
+		opacity: 0.87
+		});
+	
+	}
+
+
 /**
  * 快速登录
  * @author lincong
  * @date 2011/10/6
  */
 function fastLogin(){
+
 	var form = $("#fastLoginForm");
 	var uid = form.find('#uid');
 	var pwd = form.find('#pwd');
+ 
 	if(uid.val().length > 12 || uid.val().length < 3 || $.trim(uid.val())==""){
 		art.dialog({icon:"warning", content:"用户名长度错误", time:5, id:"FN_fastLogin_01", ok:function(){uid.focus();}});
 		return false;
@@ -112,7 +133,9 @@ function fastLogin(){
 		art.dialog({icon:"warning", content:"密码长度错误", time:5, id:"FN_fastLogin_01", ok:function(){pwd.focus();}});
 		return false;
 		}
-	form.attr("action", "action.php?action=login").submit();	
+	form.attr("action", "action.php?action=login").submit();
+ 
+	
 	}	
 
 function loginOut(){
