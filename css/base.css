@@ -35,26 +35,59 @@ b9ad86
 
 */
 .header{ height:99px; width:940px; text-align:center; margin:auto; background:url(../src/images/header_bg.gif) no-repeat}
-.header #login_form{ margin: 0px 810px; color:#fff; font-size:16px; position:absolute; font-weight:;width: 200px; height: 50px; padding: 10px;}
+.header .isLogin{color:#FFF !important; margin:0 0 0 300px !important; width: 500px !important; font-size:12px !important}
+.header .isLogin ul li{ list-style:none}
+.header .isLogin ul li a{color:#FFF !important;}
+.header .isLogin ul li a:hover{color:#FFF !important;}
+.header #login_form{ margin: 0px 810px; color:#fff; font-size:16px; position:; font-weight:;width: 120px; height: 50px; padding: 10px;}
 .header #login_form ul{}
 .header #login_form ul li{ display:inline-block; float:left}
-.header #login_form ul li a{ display:inline-block; width:50px}
-.header #login_form ul li a:hover{cursor:pointer}
+.header #login_form ul li a{ display:inline-block; width:50px; color:#FFF}
+.header #login_form ul li a:hover{cursor:pointer; color:#FFF}
 .header #login_form ul li span{}
+
 
 .header_bar{height:10px; width:940px; text-align:center; background:url(../src/images/1_09.png) no-repeat; margin:4px auto}
 
 .nav{height:29px; width:940px; text-align:center; margin:auto; background:url(../src/images/nav_bg.gif) no-repeat; color:#FFF; font-size:14px;}
 .nav ul{float: left;}
 .nav ul li{display:inline-block; float:left}
-.nav ul li a{display:inline-block; width:125px; font-weight:bold; padding:3px 0 0 0}
-.nav ul li a:hover{ cursor:pointer}
+.nav ul li a{display:inline-block; width:125px; font-weight:bold; padding:3px 0 0 0; color:#FFF; text-decoration:none}
+.nav ul li a:hover{ cursor:pointer; color:#CCC;}
 .nav ul li span{display:inline-block; font-size:9px; font-weight:bold; padding:5px 0 0 0}
 .nav ul.fast_search #fast_search{ margin:0; padding:0}
 .nav ul.fast_search #fast_search #fast_search_text{ border:0 none; height:20px; line-height:20px; padding:0 0 0 20px; width:100px; margin: 4px 0 0 -20px; background:url(../src/images/search_ico.gif) 5px no-repeat #fff}
+
+
+.main{ width:940px; text-align:center; margin:5px auto;}
+
+
+.main .main_left_slider{}
+.main .main_left_slider ul{}
+.main .main_left_slider ul li{ float:left}
+.main .main_left_slider ul li a{}
+.main .main_left_slider ul li a:hover{}
+
+
+.index_news_panel{}
+.index_news_panel ul{}
+.index_news_panel ul li{ display:block; border-bottom:#999 2px solid;height: 20px; }
+.index_news_panel ul li a{ color:#999; text-decoration:none; display:block; padding:3px 2px}
+.index_news_panel ul li a:hover{color:#999; text-decoration:none;cursor:pointer}
+.index_news_panel ul li a span{ color:#999; font-size:12px; font-weight:bold; display:block;}
+.index_news_panel ul li a .index_news_panel_title{ text-align: left !important; float:left}
+.index_news_panel ul li a .index_news_panel_time{ text-align: right; float:right}
+
+.index_news_panel2{}
+.index_news_panel2 ul li{height: 25px;}
+.index_news_panel2 ul li a span{ color:#999; font-size:12px;}
+
+.proj{width:940px; text-align:center; margin:5px auto; background:#F8F8F8}
+
+
 /*foot*/
-.footer{ color:#000;  font-family: "微软雅黑",tahoma; font-size:14px; font-weight:bold; width:940px; text-align:center; margin:auto}
-.footer .sitemap{ color:#999 !important; height:30px; margin-top:20px}
+.footer{ color:#5c5c5c;  font-family: "微软雅黑",tahoma; font-size:14px; font-weight:bold; width:940px; text-align:center; margin:auto}
+.footer .sitemap{ color:#5c5c5c !important; background:#f8f8f8;   margin-top:20px; padding:5px 0; margin-bottom:5px}
 .footer .sitemap a{ display:inline-block; width:100px}
 .footer .sitemap a:hover{ cursor:pointer}
 .footer .sitemap span{ display:inline-block}
@@ -69,13 +102,16 @@ b9ad86
 
 
 
+.news{ width:940px; text-align:center; margin:2px auto; background:url(../src/images/news_bg.gif) repeat-x}
+.news .news_header{ color:#07182A; text-align:center; font-size:24px; padding:22px 0 10px 0; font-weight:bold; border-bottom:2px #BC554E dashed; margin:0 50px}
+.news .news_datetime{ text-align:center; font-size:14px; margin:2px auto}
+.news .news_body{ width:920px; overflow:visible}
+.news .news_footer{color:#07182A; text-align:center; font-size:24px; padding:22px 0 10px 0; }
+.news .news_footer a{color:#07182A; text-decoration:none}
 
 
 
-
-
-
-
+#fastLoginForm_div{ display:none; }
 
 
 

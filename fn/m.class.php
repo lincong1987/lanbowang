@@ -332,11 +332,11 @@ class news extends ActionSupport{
 			$this->addActionError("news", "文章内容为空"); return parent::ERROR;
 			}		
 		/*截取前20个字, strip_tag指去掉html标记*/
-		$this->news["news_content_short"] = substr(strip_tags($this->news["news_content"]), 0, 20);
+		$this->news["news_content_short"] = substr(clearHtml($this->news["news_content"]), 0, 20);
 		$this->news["news_content_short"] = empty($this->news["news_content_short"]) ? "此条新闻没有文本内容" : $this->news["news_content_short"];
 		$this->news["uid"] = isset($_REQUEST["uid"]) ? $_REQUEST["uid"] : "admin";
 		$this->news["isPublish"] = isset($_REQUEST["isPublish"]) ? $_REQUEST["isPublish"] : "1";
-		$this->news["news_post_time"] = isset($_REQUEST["news_post_time"]) ? $_REQUEST["news_post_time"] : date("Y-m-d H:i:s", time());
+		$this->news["news_post_time"] = !empty($_REQUEST["news_post_time"]) ? $_REQUEST["news_post_time"] : date("Y-m-d H:i:s", time());
 		
 		$sql = "insert into ".$this->mysqlConfig["db_perfix"]."web_news 
 			(news_title, news_content, news_content_short, 
@@ -348,7 +348,40 @@ class news extends ActionSupport{
 		}
 	
 	public function modi(){
+		$this->news["id"] = isset($_REQUEST["id"]) ? $_REQUEST["id"] : "";
+		if(empty($this->news["id"])){
+			$this->addActionError("id", "id为空"); return parent::ERROR;
+			}
+		$this->news["news_title"] = isset($_REQUEST["news_title"]) ? $_REQUEST["news_title"] : "";
+		if(empty($this->news["news_title"])){
+			$this->addActionError("news", "标题为空"); return parent::ERROR;
+			}
+		$this->news["news_type"] = isset($_REQUEST["news_type"]) ? $_REQUEST["news_type"] : "1";	
+		$this->news["news_content"] = isset($_REQUEST["news_content"]) ? $_REQUEST["news_content"] : "";
+		if(empty($this->news["news_content"])){
+			$this->addActionError("news", "文章内容为空"); return parent::ERROR;
+			}		
+		/*截取前20个字, strip_tag指去掉html标记*/
+		$this->news["news_content_short"] = substr(clearHtml($this->news["news_content"]), 0, 20);
+		$this->news["news_content_short"] = empty($this->news["news_content_short"]) ? "此条新闻没有文本内容" : $this->news["news_content_short"];
+		$this->news["uid"] = isset($_REQUEST["uid"]) ? $_REQUEST["uid"] : "admin";
+		$this->news["isPublish"] = isset($_REQUEST["isPublish"]) ? $_REQUEST["isPublish"] : "1";
+		$this->news["news_post_time"] = !empty($_REQUEST["news_post_time"]) ? $_REQUEST["news_post_time"] : date("Y-m-d H:i:s", time());
 		
+		$sql = "update ".$this->mysqlConfig["db_perfix"]."web_news 
+				set 
+				news_title = '{$this->news["news_title"]}',
+				news_content = '{$this->news["news_content"]}',
+				news_content_short = '{$this->news["news_content_short"]}',
+				uid = '{$this->news["uid"]}',
+				isPublish = '{$this->news["isPublish"]}',
+				news_post_time = '{$this->news["news_post_time"]}',
+				news_title = '{$this->news["news_title"]}'
+				where id = {$this->news["id"]}
+				";
+		$rs = sqlExecute($sql);
+
+		return parent::SUCCESS;
 		}
 	
 	public function del(){
@@ -357,12 +390,12 @@ class news extends ActionSupport{
 
 	public function get($count){
 		
-		$sql = "select id, name from ".$this->mysqlConfig["db_perfix"]."web_news_type order by sort asc, id asc";
+		$sql = "select * from ".$this->mysqlConfig["db_perfix"]."web_news order by id desc limit {$count}";
 		return sqlArray($sql);
 		}
 
 	public function getNewsById($id){
-		$sql = "select id, name from ".$this->mysqlConfig["db_perfix"]."web_news_type order by sort asc, id asc";
+		$sql = "select * from ".$this->mysqlConfig["db_perfix"]."web_news where id = {$id} order by id desc";
 		return sqlArray($sql);		
 		}
 	

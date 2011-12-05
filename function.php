@@ -176,6 +176,8 @@ function getResult($sql,$msg = "",$type = "html"){
 * @return bolean
 */
 function sqlExecute($sql,$msg="",$type="html"){
+	global $system;
+	global $mysqlConfig;	
 	$msg = empty($msg) ? "" : $msg;
 	mysql_query("set names {$mysqlConfig["db_charset"]}");
 	$bool=mysql_query($sql) or error("sqlExecute Filed<br><span style='font-size:12px; font-family:Verdana;'>{$msg}<br>{$sql}<br>".mysql_error()."<BR>PROJECT_VER:{$system["version"]}</span>",$msg,$type);
@@ -233,7 +235,16 @@ function sqlCount($sql,$msg="",$type="html",$countField='*'){
 }
 
 
-
+function clearHtml($str){  
+	$str = trim($str);  
+	$str = strip_tags($str,"");  
+	$str = ereg_replace("\t","",$str);  
+	$str = ereg_replace("\r\n","",$str);  
+	$str = ereg_replace("\r","",$str);  
+	$str = ereg_replace("\n","",$str);  
+	$str = ereg_replace(" "," ",$str);  
+	return trim($str);  
+}
 
 
 

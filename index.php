@@ -15,8 +15,8 @@ $isLogin = login::isLogin();
 
 $news = new news();
 
-$newsList = $news->get(10);
-
+$newsList = $news->get(3);
+$newsList2 = $news->get(4);
 $newsTypeList = $news->getNewsType();
 
 //
@@ -56,43 +56,101 @@ var system = <?php echo json_encode($system);?>;
 </head>
 
 <body>
-<div class="header">
-<div id="login_form">
-    	<ul>
-        	<li><a>登陆</a></li>
-            <li><span>|</span></li>
-            <li><a>注册</a></li>
-        </ul>
-    </div>
-</div>
-
-<div class="clearFix"></div>
-<div class="header_bar"></div>
+<?php
+	include("html/header.php");
+?>
 <div class="clearFix"></div>
 
-<div class="nav">
-	<ul>
-    	<li><a>首页</a></li>
-        <li><span>|</span></li>
-        <li><a>走进蓝博旺</a></li>
-        <li><span>|</span></li>
-        <li><a>项目展示</a></li>
-        <li><span>|</span></li>
-        <li><a>地产论坛</a></li>
-        <li><span>|</span></li>
-        <li><a>人力中心</a></li>
-        <li><span>|</span></li>
-        <li><a>联系我们</a></li>
-    </ul>
-    <ul class="fast_search">
-    	<form id="fast_search">
-        	<input id="fast_search_text" name="fast_search_text" /> <input type="image" src="src/images/search_btn.gif"/>
-        </form>
-    </ul>
+<div class="main">
+<table width="100%" border="0" height="272">
+  <tr>
+    <td valign="top" width="224">
+   	  <div class="main_left_slider" style="width:224px; height:182px">
+        	<ul>
+            	<li><a><img src="src/images/1_34.png" width="56" height="182" /></a></li>
+                <li><a><img src="src/images/1_36.png" width="56" height="182" /></a></li>
+                <li><a><img src="src/images/1_38.png" width="56" height="182" /></a></li>
+                <li><a><img src="src/images/1_40.gif" width="56" height="182" /></a></li>
+            </ul>
+        </div>
+        <div style="width:224px; height:88px">
+        	<a><img src="src/images/1_46.png" width="224" height="88" /></a>
+        </div>
+    </td>
+    <td valign="top">
+    	<div>
+        	<ul>
+            	<li><a><img src="src/images/1_42.png" width="478" height="182" /></a></li>
+            </ul>
+        </div>
+
+         <table width="337" style="margin:8px 5px">
+            <tr>
+                <td width="146" height="75">
+                	<img src="src/images/1_47.png" width="146" height="75" />
+                </td>
+                <td>                
+                    <div class="index_news_panel" style=" width:330px; margin-left:3px">
+                        <ul>
+                        	<?php 
+							foreach($newsList as $k => $v){
+								echo  "<li><a href='news.php?id={$v['id']}'><span class='index_news_panel_title'>{$v['news_title']}</span><span class='index_news_panel_time'>{$v['news_post_time']}</span></a></li>";
+								}
+							?>                            
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+    </td>
+    <td valign="top" width="223" height="272"><a href="#"><img src="src/images/1_43.png" width="223" height="272" border="0" /></a></td>
+  </tr>
+</table>
+
+</div>
+
+<div class="proj">
+<table>
+    <tr>
+      <td>
+        	<div style="width:475px; overflow:hidden">
+            	<a><img src="src/images/1_54.png" /></a>
+                <a><img src="src/images/1_55.png" /></a>
+                <a><img src="src/images/1_56.png" /></a>
+                <a><img src="src/images/1_58.png" /></a>
+            </div>
+			<div class="index_news_panel index_news_panel2" style=" width:470px; margin-left:3px">
+                <ul>
+                    <?php 
+                    foreach($newsList2 as $k => $v){
+                        echo  "<li><a href='news.php?id={$v['id']}'><span class='index_news_panel_title'>{$v['news_title']}</span><span class='index_news_panel_time'>{$v['news_post_time']}</span></a></li>";
+                        }
+                    ?>                            
+                </ul>
+            </div>
+            <div style="margin-top:10px; text-align:left">
+            	<a><img src="src/images/1_68.png" width="218" height="61" style="margin-right:30px" /></a>
+                <a><img src="src/images/1_70.png" width="220" height="61" /></a>
+          </div>
+      </td>
+    	<td align="right"  width="470" height="26">
+        	<div style=" text-align:right; width:454px; height:26px;">
+            	<img src="src/images/1_61.png" width="454" height="26" />           
+      		</div>
+            <div>            
+            	<img src="src/images/1_64.png" /><img src="src/images/1_65.png" />      
+            </div>
+        </td>
+    </tr>
+</table>
+
+
+
 </div>
 
 
-
+<div class="clearFix"></div>
 <?php
 	include("html/footer.php");
 ?>
@@ -102,6 +160,8 @@ var system = <?php echo json_encode($system);?>;
 <script>
 
 $(document).ready(function(){
+	
+
 	
 	//构造slide图
 //	$("#index_slide_images").append('<div id="piclist"></div><div id="numlist"></div>');
