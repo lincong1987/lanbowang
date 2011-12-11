@@ -107,7 +107,7 @@ id="form1">
     </tr>
     <tr>
       <td align="right" class="l-table-edit-td"> 分类: </td>
-      <td align="left" class="l-table-edit-td"><select name="depart" id="depart" ltype="select">
+      <td align="left" class="l-table-edit-td"><select name="news_type" id="news_type" ltype="select">
       	<?php
 			foreach($newTypeArray as $key=>$value){
 				echo "<option value='{$value["id"]}'>{$value["name"]}</option>";

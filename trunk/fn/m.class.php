@@ -21,29 +21,40 @@ class param extends ActionSupport{
 		$sql = "select id, param_key, param_value from ".$this->mysqlConfig["db_perfix"]."param where param_key = '{$paramKey}' ";
 		if(sqlCount($sql) == 0){return "param not found";}
 		$rs = sqlRow($sql);
-		return $rs["param_value"];
+		return $rs ? parent::SUCCESS : parent::ERROR;	
 		}
 
 	/**
 	 *	@Desc:	设置参数
-	 *	@prama	$paramValue	
+	 *	@prama	$paramValue
+	 *	@param	$paramValue=""
 	 */	
-	public function setParamValue($paramValue){
+	public function setParamValue($paramKey, $paramValue=""){
 		$sql = "uptate ".$this->mysqlConfig["db_perfix"]."param set param_value = '{$paramValue}'  where param_key = '{$paramKey}' ";
 		$rs = sqlExecute($sql);
-		return parent::SUCCESS;	
+		return $rs ? parent::SUCCESS : parent::ERROR;	
 		}
 	
 	/**
 	 *	@Desc:	添加
-	 *	@prama	$paramKey	
+	 *	@prama	$paramKey
+	 *	@param	$paramValue=""
 	 */	
-	public function saveParam($paramKey, $paramValue){
+	public function saveParam($paramKey, $paramValue=""){
 		$sql = "insert into ".$this->mysqlConfig["db_perfix"]."param (param_value, param_key) values ('{$paramValue}', '{$paramKey}') ";
 		$rs = sqlExecute($sql);
-		return parent::SUCCESS;	
-		}	
-
+		return $rs ? parent::SUCCESS : parent::ERROR;	
+		}
+	/**
+	 *	@Desc:	删除
+	 *	@prama	$paramKey	
+	 */		
+	public function rmParam($paramKey){
+		$sql = "delete ".$this->mysqlConfig["db_perfix"]."param where param_key = '{$paramKey}' limit 1 ";
+		$rs = sqlExecute($sql);
+		return $rs ? parent::SUCCESS : parent::ERROR;			
+		
+		}
 //	public function getParamList($paramKey=""){
 //		$sql = "select id, param_key, param_value from ".$this->mysqlConfig["db_perfix"]." where param_key = '{$paramKey}' ";
 //		$rs = sqlRow($sql);
@@ -305,7 +316,7 @@ class news extends ActionSupport{
 	private $news = array(
 		"id" => "",
 		"news_title" => "",
-		"news_type" => "",
+		"news_type_id" => "",
 		"news_content" => "",
 		"news_content_short" => "",
 		"uid" => "",
@@ -339,9 +350,9 @@ class news extends ActionSupport{
 		$this->news["news_post_time"] = !empty($_REQUEST["news_post_time"]) ? $_REQUEST["news_post_time"] : date("Y-m-d H:i:s", time());
 		
 		$sql = "insert into ".$this->mysqlConfig["db_perfix"]."web_news 
-			(news_title, news_content, news_content_short, 
+			(news_title, news_type_id, news_content, news_content_short, 
 				uid, isPublish, news_post_time) 
-					values('{$this->news["news_title"]}', '{$this->news["news_content"]}', '{$this->news["news_content_short"]}',
+					values('{$this->news["news_title"]}', '{$this->news["news_type"]}', '{$this->news["news_content"]}', '{$this->news["news_content_short"]}',
 						'{$this->news["uid"]}', '{$this->news["isPublish"]}', '{$this->news["news_post_time"]}')";
 		$rs = sqlExecute($sql);
 		return parent::SUCCESS;
@@ -361,7 +372,7 @@ class news extends ActionSupport{
 		if(empty($this->news["news_content"])){
 			$this->addActionError("news", "文章内容为空"); return parent::ERROR;
 			}		
-		/*截取前20个字, strip_tag指去掉html标记*/
+		/*截取前20个字, strip_tags指去掉html标记*/
 		$this->news["news_content_short"] = substr(clearHtml($this->news["news_content"]), 0, 20);
 		$this->news["news_content_short"] = empty($this->news["news_content_short"]) ? "此条新闻没有文本内容" : $this->news["news_content_short"];
 		$this->news["uid"] = isset($_REQUEST["uid"]) ? $_REQUEST["uid"] : "admin";
@@ -372,6 +383,7 @@ class news extends ActionSupport{
 				set 
 				news_title = '{$this->news["news_title"]}',
 				news_content = '{$this->news["news_content"]}',
+				news_type_id = '{$this->news["news_type"]}',
 				news_content_short = '{$this->news["news_content_short"]}',
 				uid = '{$this->news["uid"]}',
 				isPublish = '{$this->news["isPublish"]}',
@@ -384,13 +396,14 @@ class news extends ActionSupport{
 		return parent::SUCCESS;
 		}
 	
-	public function del(){
-		
+	public function del($id){
+		$sql = "delete ".$this->mysqlConfig["db_perfix"]."web_news where id = {$id}";
+		return sqlArray($sql);		
 		}
 
-	public function get($count){
-		
-		$sql = "select * from ".$this->mysqlConfig["db_perfix"]."web_news order by id desc limit {$count}";
+	public function get($count, $type_id=""){
+		$type_id = !empty($type_id) ? "where news_type_id = '{$type_id}'" : "";
+		$sql = "select * from ".$this->mysqlConfig["db_perfix"]."web_news {$type_id} order by id desc limit {$count}";
 		return sqlArray($sql);
 		}
 

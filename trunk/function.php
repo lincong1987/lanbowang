@@ -43,13 +43,14 @@ function error($str = "", $type = "die", $href=""){
 			<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>[line:]</b>{$d["line"]}
 			<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>[function:]</b>{$d["function"]}
 			";
-		}	
+		}
+	$head = '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>';	
 	switch($type){
 		/*
 			goBack 
 		*/			
 		case "goBack" :
-			die("<html><body><script>
+			die("<html>{$head} <body><script>
 			setTimeout('history.back()', 2000);			
 			</script><div style='font-size:12px; font-family:Verdana;background:url({$err_img}) #F6FBFF no-repeat 0px 0px; height:117px; width:550px; overflow-x: hidden; overflow-y: auto; padding-left:140px; border:1px solid #8cb7d7; margin:10px; color:#369'><br>错误:{$ACTION_ERRORS}<br>".$_d."<br>正在返回...</div></body></html>");
 			break;
@@ -57,7 +58,7 @@ function error($str = "", $type = "die", $href=""){
 			alertGoBack 
 		*/				
 		case "alertGoBack" :
-			die("<html><body><script>
+			die("<html>{$head} <body><script>
 			var str = ".json_encode($str).";
 			alert(str);
 			history.back();
@@ -67,7 +68,7 @@ function error($str = "", $type = "die", $href=""){
 			alert 
 		*/	
 		case "alert" :
-			die("<html><body><script>
+			die("<html>{$head} <body><script>
 			var str = ".json_encode($str).";
 			alert(str);
 			</script><div style='font-size:12px; font-family:Verdana;background:url({$err_img}) #F6FBFF no-repeat 0px 0px; height:117px; width:550px; overflow-x: hidden; overflow-y: auto; padding-left:140px; border:1px solid #8cb7d7; margin:10px; color:#369'><br>错误:{$ACTION_ERRORS}<br>".$_d."</div></body></html>");
@@ -76,7 +77,7 @@ function error($str = "", $type = "die", $href=""){
 			-1 
 		*/	
 		case "-1" :
-			die("<html><body><script>
+			die("<html>{$head} <body><script>
 			//var str = ".json_encode($str).";
 			//alert(str);
 			history.go(-1);
@@ -86,7 +87,7 @@ function error($str = "", $type = "die", $href=""){
 			alertGoTo 
 		*/			
 		case "alertGoTo" :
-			die("<html><body><script>
+			die("<html>{$head} <body><script>
 			var _href = ".json_encode($href).", str = ".json_encode($str).";
 			alert(str);
 			location.href = _href;
@@ -96,7 +97,7 @@ function error($str = "", $type = "die", $href=""){
 			goTo 
 		*/			
 		case "goTo" :
-			die("<html><body><script>
+			die("<html>{$head} <body><script>
 			var _href = ".json_encode($href).", str = ".json_encode($str).";
 			//alert(str);
 			location.href = _href;
@@ -104,13 +105,13 @@ function error($str = "", $type = "die", $href=""){
 			break;
 
 		case "die" :
-			die("<html><body><div style='font-size:12px; font-family:Verdana;background:url({$err_img}) #F6FBFF no-repeat 0px 0px; height:117px; width:550px; overflow-x: hidden; overflow-y: auto; padding-left:140px; border:1px solid #8cb7d7; margin:10px; color:#369'><br>错误:{$ACTION_ERRORS}<br>".$_d."</div></body></html>");
+			die("<html>{$head} <body><div style='font-size:12px; font-family:Verdana;background:url({$err_img}) #F6FBFF no-repeat 0px 0px; height:117px; width:550px; overflow-x: hidden; overflow-y: auto; padding-left:140px; border:1px solid #8cb7d7; margin:10px; color:#369'><br>错误:{$ACTION_ERRORS}<br>".$_d."</div></body></html>");
 			break;
 		case "json" :
 			jsonError("fail", $str);
 			break;
 		default:
-			echo "<!--error info --><div style='font-size:12px; font-family:Verdana;background:url({$err_img}) #F6FBFF no-repeat 0px 0px; height:117px; width:550px; overflow-x: hidden; overflow-y: auto; padding-left:140px; border:1px solid #8cb7d7; margin:10px; color:#369'><br>错误:{$ACTION_ERRORS}<br>".$_d."</div><!--error info -->";
+			echo "<!--error info -->{$head} <div style='font-size:12px; font-family:Verdana;background:url({$err_img}) #F6FBFF no-repeat 0px 0px; height:117px; width:550px; overflow-x: hidden; overflow-y: auto; padding-left:140px; border:1px solid #8cb7d7; margin:10px; color:#369'><br>错误:{$ACTION_ERRORS}<br>".$_d."</div><!--error info -->";
 			break;		
 		}
 	}

@@ -32,13 +32,13 @@
 	<ul>
     	<li><a href="index.php">首页</a></li>
         <li><span>|</span></li>
-        <li><a href="index.php">走进蓝博旺</a></li>
+        <li><a href="aboutus.php?paramKey=aboutus">走进蓝博旺</a></li>
         <li><span>|</span></li>
-        <li><a href="index.php">项目展示</a></li>
+        <li><a href="newsList.php?type=1">动态资讯</a></li>
         <li><span>|</span></li>
-        <li><a href="index.php">地产论坛</a></li>
+        <li><a href="newsList.php?type=2">项目展示</a></li>
         <li><span>|</span></li>
-        <li><a href="index.php">人力中心</a></li>
+        <li><a href="newsList.php?type=3">人力资源</a></li>
         <li><span>|</span></li>
         <li><a href="index.php">联系我们</a></li>
     </ul>
