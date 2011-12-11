@@ -127,7 +127,6 @@ function doMod(id){
 		init : function(){
 			$("#paramKey").val($("td:[rel=paramKey][relid="+id+"]").html());
 			$("#paramValue").val($("td:[rel=paramValue][relid="+id+"]").html());
-			alert(2)
 			editor = KindEditor.create('textarea[name="paramValue"]', {
 				allowFileManager : true,
 				height : 300,
@@ -135,27 +134,34 @@ function doMod(id){
 			});			
 			},
 		ok : function(){
-			alert(3)
+			paramKey = $("#paramKey").val();
 			paramValue = editor.html();
-			$.post("news_manage_action.php?action=doMod", {id:id, paramKey:paramKey, paramValue:paramValue}, function(json){
-				if(json.state == "fail"){
-					$.ligerDialog.error('修改失败，'+json.msg);
+			$.ajax({
+				type:'POST',
+				dataType: "json",
+				url:'param_manage_action.php?action=doMod',
+				data:{id:id, paramKey:paramKey, paramValue:paramValue},
+				success:function(json){
+					if(json.state == "fail"){
+						$.ligerDialog.error('修改失败，'+json.msg);
+						}
+					if(json.state == "succ"){
+						$.ligerDialog.success('修改成功');
+						location.reload();
+						}
 					}
-				if(json.state == "succ"){
-					$.ligerDialog.success('修改成功');
-					location.reload();
-					}
-				}, "josn");
+				});
+				return false;
 			},
 		cancel : function(){
 			editor.remove();
-			editor = null;			
-			}		
+			editor = null;
+			}
 		});
 	}
 	
 function doRm(id){
-	$.post("news_manage_action.php?action=doRm", {id:id}, function(json){
+	$.post("param_manage_action.php?action=doRm", {id:id}, function(json){
 		if(json.state == "fail"){
 			$.ligerDialog.error('删除失败，'+json.msg);
 			}
@@ -167,14 +173,36 @@ function doRm(id){
 	}
 	
 function doAdd(){
-	$.post("news_manage_action.php?action=doRm", {id:id}, function(json){
-		if(json.state == "fail"){
-			$.ligerDialog.error('删除失败，'+json.msg);
-			}
-		if(json.state == "succ"){
-			$.ligerDialog.success('删除成功');
-			location.reload();
-			}
-		}, "josn");	
+	$.dialog({
+		title : "修改",
+		content : document.getElementById("dialogTemp"),
+		init : function(){
+			$("#paramKey").val($("td:[rel=paramKey][relid="+id+"]").html());
+			$("#paramValue").val($("td:[rel=paramValue][relid="+id+"]").html());
+			editor = KindEditor.create('textarea[name="paramValue"]', {
+				allowFileManager : true,
+				height : 300,
+				width : 500
+			});			
+			},
+		ok : function(){
+			
+			paramValue = editor.html();
+			$.post("param_manage_action.php?action=doAdd", {paramKey:paramKey, paramValue:paramValue}, function(json){
+				if(json.state == "fail"){
+					$.ligerDialog.error('添加失败，'+json.msg);
+					}
+				if(json.state == "succ"){
+					$.ligerDialog.success('添加成功');
+					location.reload();
+					}
+				}, "josn");	
+			},
+		cancel : function(){
+			editor.remove();
+			editor = null;			
+			}		
+		});
+
 	}		
 </script>

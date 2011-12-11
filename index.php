@@ -16,7 +16,7 @@ $isLogin = login::isLogin();
 $news = new news();
 
 $newsList = $news->get(3);
-$newsList2 = $news->get(4);
+$newsList2 = $news->get(4, 2);
 $newsTypeList = $news->getNewsType();
 
 //
@@ -94,7 +94,7 @@ var system = <?php echo json_encode($system);?>;
                         <ul>
                         	<?php 
 							foreach($newsList as $k => $v){
-								echo  "<li><a href='news.php?id={$v['id']}'><span class='index_news_panel_title'>{$v['news_title']}</span><span class='index_news_panel_time'>{$v['news_post_time']}</span></a></li>";
+								echo  "<li><a target='_blank' href='news.php?id={$v['id']}'><span class='index_news_panel_title'>{$v['news_title']}</span><span class='index_news_panel_time'>{$v['news_post_time']}</span></a></li>";
 								}
 							?>                            
                         </ul>
@@ -124,7 +124,7 @@ var system = <?php echo json_encode($system);?>;
                 <ul>
                     <?php 
                     foreach($newsList2 as $k => $v){
-                        echo  "<li><a href='news.php?id={$v['id']}'><span class='index_news_panel_title'>{$v['news_title']}</span><span class='index_news_panel_time'>{$v['news_post_time']}</span></a></li>";
+                        echo  "<li><a target='_blank' href='news.php?id={$v['id']}'><span class='index_news_panel_title'>{$v['news_title']}</span><span class='index_news_panel_time'>{$v['news_post_time']}</span></a></li>";
                         }
                     ?>                            
                 </ul>

@@ -44,6 +44,8 @@ function f_addTab(tabid, text, url){
 	tab.addTabItem({tabid : tabid,text: text, url: url });
 }
 
+var timer = null;
+
 $(document).ready(function(){
 	$("#userInfo").html(getHello() + user.nid + ", 欢迎登陆" + system.company);	
 	$("#layout1").ligerLayout({leftWidth: 200, topHeight:50});
@@ -83,21 +85,24 @@ $(document).ready(function(){
 	tab = $("#framecenter").ligerGetTabManager();
 	accordion = $("#accordion1").ligerGetAccordionManager();
 	tree = $("#tree1").ligerGetTreeManager();
-	$("#pageloading").hide();	
-	
+	$("#pageloading").hide();
+	timer = setInterval(function(){
+			var t = new Date();							
+			$("#timer").html(t.getFullYear()+'/'+(t.getMonth()+1)+'/'+t.getDate()+" "+t.getHours()+":"+t.getMinutes()+":"+t.getSeconds())
+		}, 1000);		
 	});
 </script>
 <style>
-body{ text-align:left; overflow:hidden}
+html,body{ text-align:left; overflow:hidden}
 #pageloading{position:absolute; left:0px; top:0px; background:white url(../src/img/loading.gif) no-repeat center; width:100%; height:100%; height:700px; z-index:99999;}
 .l-link{ display:block; height:26px; line-height:26px; padding-left:10px; text-decoration:underline; color:#333;}
 
 .headerNav  { background-color:#030b1d; }
 .headerNav .logo { background:url(../src/flash/logo_1.png) no-repeat; float:left; height:50px; text-indent:-1000px; width:250px;}
-.headerNav .nav{ height:21px; position:absolute; right:0; top:8px; z-index:31;	 display:block; }
-.headerNav .nav li { float:left; margin-left:1px; padding:0 8px; line-height:11px; background:url(../src/img/listLine.png) no-repeat; }
-.headerNav .nav li a { color:#b9ccda;}
-.headerNav .nav ul{ margin:0; padding:0}
+.headerNav ul{ height:21px; position:absolute; right:0; top:8px; z-index:31;	 display:block; }
+.headerNav ul li { float:left; margin-left:1px; padding:0 8px; line-height:11px; background:url(../src/img/listLine.png) no-repeat; }
+.headerNav ul li a { color:#b9ccda;}
+.headerNav ul ul{ margin:0; padding:0}
 
 </style>
 </head>
@@ -109,7 +114,9 @@ body{ text-align:left; overflow:hidden}
         <div position="top" style="background:#030b1d; color:White; height:50px; line-height:50px; padding-left:10px"> 
    			<div class="headerNav"> 
 				<a class="logo" href="#">标志</a> 
-				<ul class="nav">
+				<ul>
+                	<li style="background: none;">现在时间：<span id="timer"></span></li>
+                	
                 	<li><span id="userInfo"></span></li>
 					<li><a href="#" onclick="userPasswordModi();">密码修改</a></li>
 					<li><a href="#" onclick="loginOut();">退出</a></li>

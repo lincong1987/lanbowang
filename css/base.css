@@ -26,7 +26,7 @@ fieldset, img {border:0 none;}
 button, input, select, textarea {font-size:100%;}
 table {border-collapse:collapse;border-spacing:0;}
 
-.clearFix{ clear:both}
+.clearFix{  clear:both}
 
 /*
 030b1d
@@ -34,14 +34,14 @@ b9ad86
 
 
 */
-.header{ height:99px; width:940px; text-align:center; margin:auto; background:url(../src/images/header_bg.gif) no-repeat}
-.header .isLogin{color:#FFF !important; margin:0 0 0 300px !important; width: 500px !important; font-size:12px !important}
+.header{ height:99px; width:940px; text-align:center; margin:0 auto; background:url(../src/images/header_bg.gif) no-repeat}
+.header .isLogin{color:#FFF !important;  font-size:12px !important}
 .header .isLogin ul li{ list-style:none}
 .header .isLogin ul li a{color:#FFF !important;}
 .header .isLogin ul li a:hover{color:#FFF !important;}
-.header #login_form{ margin: 0px 810px; color:#fff; font-size:16px; position:; font-weight:;width: 120px; height: 50px; padding: 10px;}
-.header #login_form ul{}
-.header #login_form ul li{ display:inline-block; float:left}
+.header #login_form{color:#fff; font-size:16px; position:; font-weight:;width: 900px; height: 50px; padding: 10px;}
+.header #login_form ul{height: 50px; width:900px}
+.header #login_form ul li{ display:inline-block; float:right}
 .header #login_form ul li a{ display:inline-block; width:50px; color:#FFF}
 .header #login_form ul li a:hover{cursor:pointer; color:#FFF}
 .header #login_form ul li span{}
@@ -83,6 +83,32 @@ b9ad86
 .index_news_panel2 ul li a span{ color:#999; font-size:12px;}
 
 .proj{width:940px; text-align:center; margin:5px auto; background:#F8F8F8}
+
+
+
+
+.left_menu{}
+.left_menu ul{}
+.left_menu ul li{ background:url(../src/images/left_menu_bg.gif) no-repeat; height: 40px; width: 250px; padding-left: 50px; font-size: 16px; font-weight: bold; text-align: left; line-height: 40px;}
+.left_menu ul li a{ text-decoration:none; color:#030b1d}
+.left_menu ul li a:hover{ color:#333; cursor:pointer}
+
+
+.article_top{ background:url(../src/images/news_bg.gif) repeat-x; height:100px}
+
+
+.article_body{ background:url(../src/images/article_bg.gif) no-repeat bottom right; padding:20px; min-height:500px}
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*foot*/
